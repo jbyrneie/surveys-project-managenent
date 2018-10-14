@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import {MobxRouter, startRouter} from 'mobx-router'
 import MainRouter from './modules/MainRouter'
 import { Provider } from 'mobx-react'
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import views from './views'
 import { createStores } from './stores/index'
 
