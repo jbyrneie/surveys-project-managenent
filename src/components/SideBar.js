@@ -21,6 +21,7 @@ export default class SideBar extends React.Component {
   state = {
     navLinks: [
       ['/', 'Home', HomeFilledIcon],
+      ['/feasability', 'Feasability', SearchIcon],
       ['/programming', 'Programming', CodeIcon],
       ['/reporting', 'Reporting', GraphLineIcon],
       ['/vendors', 'Vendors', ListIcon],
