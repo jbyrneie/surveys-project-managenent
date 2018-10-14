@@ -16,8 +16,12 @@ import {STATUS} from '../lib/utils'
 import '../css/qi.css'
 
 class Vendors extends Component {
-  constructor(props) {
-    super(props);
+  static contextTypes = {
+    router: PropTypes.object,
+  };
+  
+  constructor(props, context) {
+    super(props, context);
     this.state = { groupBy: '0', filterBy: '0' }
   }
 
@@ -34,8 +38,7 @@ class Vendors extends Component {
   _vendorSurveys(index, vendors, event) {
     console.log('_vendorSurveys: %s %s', index, JSON.stringify(vendors[index]));
     this.props.store.qiStore.setSelectedVendor(vendors[index])
-    //const {router: {goTo}} = this.props.store
-    //goTo(views.vendorSurveys, {}, this.props.store.selectedVendor)
+    this.context.router.push('/vendorSurveys')
   }
   
   render() {

@@ -76,7 +76,7 @@ class VendorSurveysByCategory extends Component {
         </PageHeader>
         <table>
           <thead>
-            <tr>
+            <tr className='table-row'>
               <th >CATEGORY</th>
               <th >STARTS</th>
               <th >%</th>
@@ -94,7 +94,7 @@ class VendorSurveysByCategory extends Component {
           {categories.map((category, index) => {
               const stats = this._getStatsByCatgory(category, vendorSurveys)
               return (
-                <tr key={index}>
+                <tr className='table-row' key={index}>
                   <td>{category}</td>
                   <td>{stats.start}</td>
                   <td>{stats.percentStart}%</td>

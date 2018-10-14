@@ -30,7 +30,7 @@ class VendorSurveysBySurvey extends Component {
         </PageHeader>
         <table>
           <thead>
-            <tr>
+            <tr className='table-row'>
               <th >PROJECT</th>
               <th >STARTS</th>
               <th >%</th>
@@ -54,7 +54,7 @@ class VendorSurveysBySurvey extends Component {
               const percentCompleted = Math.round((survey.status.stats.complete/total)*100)
 
               return (
-                <tr key={index}>
+                <tr className='table-row' key={index}>
                   <td>{survey.project}</td>
                   <td>{survey.status.stats.start}</td>
                   <td>{percentStarts}%</td>
