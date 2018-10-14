@@ -3,9 +3,13 @@ import React, { Component } from 'react';
 import { Router, Route, browserHistory } from 'react-router';
 import App from './App';
 import HomePage from '../pages/HomePage';
-import SettingsPage from '../pages/SettingsPage';
 import ProgrammingPage from '../pages/ProgrammingPage';
+import ReportingPage from '../pages/ReportingPage'
 import VendorsPage from '../pages/VendorsPage';
+import VendorSurveysPage from '../pages/VendorSurveysPage';
+import FeasabilityPage from '../pages/FeasabilityPage';
+import SurveyDetailsPage from '../pages/SurveyDetailsPage';
+import LeadsPage from '../pages/LeadsPage';
 
 export default class MainRouter extends Component {
   constructor() {
@@ -42,11 +46,13 @@ export default class MainRouter extends Component {
       <Router history={browserHistory}>
         <Route component={this.appWithPersistentNav()}>
           <Route path="/" component={HomePage} />
-          <Route path="/jack" render={(routeProps) => <HomePage {...routeProps}/>} />
-          <Route path="/settings" component={SettingsPage} />
-          <Route path="/surveyDetails" component={SettingsPage} />
+          <Route path="/feasability" component={FeasabilityPage} />
+          <Route path="/lead" component={LeadsPage} />
           <Route path="/programming" component={ProgrammingPage} />
+          <Route path="/reporting" component={ReportingPage} />
+          <Route path="/surveyDetails" component={SurveyDetailsPage} />
           <Route path="/vendors" component={VendorsPage} />
+          <Route path="/vendorSurveys" component={VendorSurveysPage} />
         </Route>
       </Router>
     );
