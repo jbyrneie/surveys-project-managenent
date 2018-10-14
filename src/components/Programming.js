@@ -24,14 +24,14 @@ class Programming extends Component {
     const tasks = this.props.tasks
 
     return(
-      <div style={{padding:30, backgroundColor: 'white'}}>
+      <div className='container'>
         <PageHeader>Programming
         <Badge appearance="primary">{tasks.length}</Badge>
         </PageHeader>
         <table>
           <thead>
             {this.props.summary?
-              <tr style={{height: '3em'}}>
+              <tr className='table-row'>
                 <th >PROJECT</th>
                 <th >TEAM</th>
                 <th >TIME LEFT</th>
@@ -39,7 +39,7 @@ class Programming extends Component {
                 <th >REVENUE</th>
               </tr>
               :
-              <tr style={{height: '3em'}}>
+              <tr className='table-row'>
                 <th >PROJECT</th>
                 <th >REVENUE</th>
                 <th >TIME LEFT</th>
@@ -51,7 +51,7 @@ class Programming extends Component {
           <tbody>
             {tasks.map((task, index) => (
               this.props.summary?
-                <tr key={index} onClick={surveyDetails.bind(this, index, tasks)} style={{borderBottom: '1px solid #ddd', height:'3em'}}>
+                <tr className='table-row' key={index} onClick={surveyDetails.bind(this, index, tasks)}>
                   <td>{task.project}</td>
                   <td>{asigneesAbbreviation(task.asignees)}</td>
                   <td>{daysLeft(task.dueDate)} day(s) - {moment(task.dueDate).format("MMMM Do")}</td>
@@ -59,7 +59,7 @@ class Programming extends Component {
                   <td>${numeral(task.revenue).format('0,0')}</td>
                 </tr>
               :
-                <tr key={index} onClick={surveyDetails.bind(this, index, tasks)} style={{borderBottom: '1px solid #ddd', height:'3em'}}>
+                <tr className='table-row' key={index} onClick={surveyDetails.bind(this, index, tasks)}>
                   <td>{task.project}</td>
                   <td>${numeral(task.revenue).format('0,0')}</td>
                   <td>{daysLeft(task.dueDate)} day(s) - {moment(task.dueDate).format("MMMM Do")}</td>

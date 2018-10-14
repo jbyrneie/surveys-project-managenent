@@ -10,7 +10,7 @@ import PageTitle from '../components/PageTitle';
 import _ from 'lodash';
 import {STATUS} from '../lib/utils'
 
-class HomePage extends Component {
+class ProgrammingPage extends Component {
   static contextTypes = {
     showModal: PropTypes.func,
     addFlag: PropTypes.func,
@@ -38,4 +38,4 @@ class HomePage extends Component {
     );
   }
 }
-export default inject((allStores) => ({ ...allStores }))(observer(HomePage))
+export default inject((allStores) => ({ ...allStores }))(observer(ProgrammingPage))
