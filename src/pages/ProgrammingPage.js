@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react'
 import Button, { ButtonGroup } from '@atlaskit/button';
-import ProgrammingTasks from '../components/ProgrammingTasks';
+import Programming from '../components/Programming';
 import MyTasks from '../components/MyTasks';
 import AppBar from '../components/AppBar';
 import ContentWrapper from '../components/ContentWrapper';
@@ -33,7 +33,7 @@ class HomePage extends Component {
       <div>
         <AppBar title='Programming' newSurvey={true}/>
         <MyTasks tasks={tasks}/>
-        <ProgrammingTasks tasks={tasks}/>
+        <Programming tasks={tasks}/>
       </div>
     );
   }
