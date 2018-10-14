@@ -7,26 +7,23 @@ import Nav, {
   AkNavigationItem,
   AkSearchDrawer,
 } from '@atlaskit/navigation';
+import HomeFilledIcon from '@atlaskit/icon/glyph/home-filled';
+import SearchIcon from '@atlaskit/icon/glyph/search';
 import DashboardIcon from '@atlaskit/icon/glyph/dashboard';
 import GearIcon from '@atlaskit/icon/glyph/settings';
-import SearchIcon from '@atlaskit/icon/glyph/search';
-import CreateIcon from '@atlaskit/icon/glyph/add';
-import AtlassianIcon from '@atlaskit/icon/glyph/atlassian';
-import ArrowleftIcon from '@atlaskit/icon/glyph/arrow-left';
-
-import CreateDrawer from '../components/CreateDrawer';
-import SearchDrawer from '../components/SearchDrawer';
-import HelpDropdownMenu from '../components/HelpDropdownMenu';
-import AccountDropdownMenu from '../components/AccountDropdownMenu';
+import PeopleGroupIcon from '@atlaskit/icon/glyph/people-group';
+import GraphLineIcon from '@atlaskit/icon/glyph/graph-line';
+import ListIcon from '@atlaskit/icon/glyph/list';
+import CodeIcon from '@atlaskit/icon/glyph/code';
 import atlaskitLogo from '../images/atlaskit.png';
 
 export default class SideBar extends React.Component {
   state = {
     navLinks: [
-      ['/', 'Home', DashboardIcon],
-      ['/settings', 'Settings', GearIcon],
-      ['/programming', 'Programming', GearIcon],
-      ['/vendors', 'Vendors', GearIcon],
+      ['/', 'Home', HomeFilledIcon],
+      ['/programming', 'Programming', CodeIcon],
+      ['/reporting', 'Reporting', GraphLineIcon],
+      ['/vendors', 'Vendors', ListIcon],
     ]
   };
 
@@ -44,9 +41,6 @@ export default class SideBar extends React.Component {
   };
 
   render() {
-    const backIcon = <ArrowleftIcon label="Back icon" size="medium" />;
-    const globalPrimaryIcon = <AtlassianIcon label="Atlassian icon" size="xlarge" />;
-
     return (
       <Nav
         isOpen={this.context.navOpenState.isOpen}
