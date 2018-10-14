@@ -25,9 +25,10 @@ class QiStore {
     return new Promise(function(resolve, reject) {
       const tasks = [
                           {
-                            project: 'BCG - Internet of things1',
+                            project: 'Game of Thrones',
                             category: 'Finance',
                             vendor: 'EMI',
+                            rush: true,
                             status: {statusId:10,
                                      stats: {invite:600, start:300, oq:50, ir:20, dropout:50, complete:20},
                                    },
@@ -39,7 +40,7 @@ class QiStore {
                             revenue: 600
                           },
                           {
-                            project: 'Bain - Asia - Internet Software and Services Industry (Survey #12345)2',
+                            project: 'Bond - Casino Royale',
                             category: 'Finance',
                             vendor: 'EMI',
                             status: {statusId: 10,
@@ -53,7 +54,7 @@ class QiStore {
                             revenue: 700
                           },
                           {
-                            project: 'BCG - Internet of things3',
+                            project: 'Internet of things3',
                             category: 'Finance',
                             vendor: 'EMI',
                             status: {statusId: 11,
@@ -67,9 +68,10 @@ class QiStore {
                             revenue: 800
                           },
                           {
-                            project: 'BCG - Transportation of stuff and loads of other stuff4',
+                            project: 'Transportation of stuff and loads of other stuff4',
                             category: 'Healthcare',
                             vendor: 'EMI',
+                            rush: true,
                             status: {statusId:12,
                                      stats: {invite:900, start:200, oq:50, ir:20, dropout:50, complete:20},
                                    },
@@ -81,7 +83,7 @@ class QiStore {
                             revenue: 900
                           },
                           {
-                            project: 'BCG - Internet of things5',
+                            project: 'AC/DC Thunderstruck',
                             category: 'Healthcare',
                             vendor: 'Russell Research',
                             status: {statusId:12,
@@ -95,7 +97,7 @@ class QiStore {
                             revenue: 1000
                           },
                           {
-                            project: 'BCG - Internet of things6',
+                            project: 'Diesel and Dust',
                             category: 'Technology',
                             vendor: 'Precision Sample',
                             status: {statusId:13,
@@ -109,7 +111,7 @@ class QiStore {
                             revenue: 1100
                           },
                           {
-                            project: 'BCG - Internet of things7',
+                            project: 'Mission Impossible III',
                             category: 'Chemicals',
                             vendor: 'Precision Sample',
                             status: {statusId:14,
@@ -123,7 +125,7 @@ class QiStore {
                             revenue: 1100
                           },
                           {
-                            project: 'BCG - Internet of things8',
+                            project: 'Lord of the rings',
                             category: 'Chemicals',
                             vendor: 'Rare Patient Voice',
                             status: {statusId:10,

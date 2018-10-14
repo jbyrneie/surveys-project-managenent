@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'mobx-router'
 import SurveyLead from './pages/HomePage'
-import SurveyDetails from './pages/SettingsPage'
+import SurveyDetails from './pages/HomePage'
 import Quote from './pages/HomePage'
 import Settings from './pages/HomePage'
 import Feasability from './pages/HomePage'
