@@ -84,7 +84,13 @@ class MyTasks extends Component {
             console.log(JSON.stringify(stuff));
             return (
                 <tr className='table-row' key={index} onClick={surveyDetails.bind(this, index, myTasks)}>
-                  <td>{task.project}</td>
+                  {task.rush?
+                    <td>
+                      <span className='label' style={{backgroundColor: 'lightgrey'}}>RUSH</span>&nbsp;{task.project}
+                    </td>
+                    :
+                    <td>{task.project}</td>
+                  }
                   <td>
                     <span className='label' style={{backgroundColor: stuff.color}}>{stuff.label}</span>
                   </td>
