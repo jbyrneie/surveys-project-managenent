@@ -1,6 +1,5 @@
 import React from 'react'
 import moment from 'moment'
-import views from  '../views'
 import _ from 'lodash'
 
 export const STATUS = {LEAD:10, QUOTE:11, PROGRAMMING:12, FEASABILITY:13, FIELDING:14}

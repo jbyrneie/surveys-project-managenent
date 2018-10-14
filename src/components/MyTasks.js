@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-import views from '../views'
 import styled from 'styled-components';
 import Lozenge from '@atlaskit/lozenge';
 import Button from '@atlaskit/button';

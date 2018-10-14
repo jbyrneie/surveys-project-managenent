@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-import views from '../views'
 import moment from 'moment'
 import numeral from 'numeral'
 import _ from 'lodash'
