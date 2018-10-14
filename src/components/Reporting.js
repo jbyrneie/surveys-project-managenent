@@ -62,10 +62,12 @@ class VendorSurveysByCategory extends Component {
                    complete: completeTotal,
                    percentComplete: Math.round((completeTotal/total)*100)
                  }
+   console.log('_getStatsByCAtegory: ', JSON.stringify(stats));
    return stats
   }
   
   render() {
+    console.log('render reporting.....');
     const vendorSurveys = this.props.store.qiStore.selectedVendorSurveys
     const categories = this._getCategories(vendorSurveys)
 
@@ -91,8 +93,11 @@ class VendorSurveysByCategory extends Component {
             </tr>
           </thead>
           <tbody>
-          {categories.map((category, index) => {
+            {categories.map((category, index) => {
+              console.log('catgeory: ', JSON.stringify(category));
+              console.log('vendorSurveys: ', JSON.stringify(vendorSurveys));
               const stats = this._getStatsByCatgory(category, vendorSurveys)
+              console.log('stats: ', JSON.stringify(stats));
               return (
                 <tr key={index}>
                   <td>{category}</td>
