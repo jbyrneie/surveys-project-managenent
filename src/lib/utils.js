@@ -1,51 +1,9 @@
 import React from 'react'
 import moment from 'moment'
-import Button from '@material-ui/core/Button';
-import green from '@material-ui/core/colors/green';
-import blue from '@material-ui/core/colors/blue';
-import yellow from '@material-ui/core/colors/yellow';
-import red from '@material-ui/core/colors/red';
-import teal from '@material-ui/core/colors/teal';
-import orange from '@material-ui/core/colors/orange';
 import views from  '../views'
 import _ from 'lodash'
 
-function _getColorFromStatus(status) {
-  switch(status) {
-    case 10:
-      return green[500]
-    case 11:
-      return blue[500]
-    case 12:
-      return yellow[500]
-    case 13:
-      return red[500]
-    case 14:
-      return teal[500]
-    default:
-      return orange[500]
-  }
-}
-
 export const STATUS = {LEAD:10, QUOTE:11, PROGRAMMING:12, FEASABILITY:13, FIELDING:14}
-export const STATUS_TO_STRING = {10:'LEAD', 11:'QUOTE', 12:'PROGRAMMING', 13:'FEASABILITY', 14:'FIELDING'}
-
-export function getAppearanceFromStatus(status) {
-  switch(status) {
-    case 10:
-      return 'success'
-    case 11:
-      return 'inprogress'
-    case 12:
-      return 'new'
-    case 13:
-      return 'moved'
-    case 14:
-      return 'new' 
-    default:
-      return 'default'
-  }
-}
 
 export function daysLeft(endDate) {
   const now = moment(new Date()); //todays date
@@ -66,17 +24,17 @@ export function daysDuration(startDate) {
 export function mapStatusToString(status) {
   switch(status) {
     case STATUS.LEAD:
-      return 'Lead'
+      return {label: 'LEAD', color: 'red'}
     case STATUS.QUOTE:
-      return 'Quote'
+      return {label: 'QUOTE', color: 'orange'}
     case STATUS.PROGRAMMING:
-      return 'Programming'
+      return {label: 'PROGRAMMING', color: 'lightgrey'}
     case STATUS.FEASABILITY:
-      return 'Feasability'
+      return {label: 'FEASABILITY', color: 'blue'}
     case STATUS.FIELDING:
-      return 'Fielding'
+      return {label: 'FIELDING', color: 'indigo'}
     default:
-      return 'unknown'
+      return {label: 'UNKNOWN', color: 'violet'}
   }
 }
 
@@ -97,35 +55,15 @@ export function mapStatusToAction(status) {
   }
 }
 
-export function statusButton(status) {
-  return(<Button
-            variant="extendedFab"
-            size="small"
-            color="primary"
-            style={{fontSize: 12,
-                    textTransform: 'none',
-                    paddingLeft: 20,
-                    paddingRight: 20,
-                    minWidth: 150,
-                    height: 30,
-                    backgroundColor: _getColorFromStatus(status)
-                  }}
-          >
-            {mapStatusToString(status)}
-        </Button>)
-}
-
 export function navigate(route, event) {
   console.log('navigate clicked');
-  const {router: {goTo}} = this.props.store
-  goTo(views[route], {}, this.props.store)
+  this.context.router.push(route)
 }
 
 export function surveyDetails(index, surveys, event) {
   console.log('surveyDetails: %s %s', index, JSON.stringify(surveys[index]));
   this.props.store.qiStore.setSelectedSurvey(surveys[index])
-  const {router: {goTo}} = this.props.store
-  goTo(views.surveyDetails, {}, this.props.store.selectedSurvey)
+  this.context.router.push('/surveyDetails')
 }
 
 export function taskTitle(title, num) {
