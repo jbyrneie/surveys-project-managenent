@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {MobxRouter, startRouter} from 'mobx-router'
 import MainRouter from './modules/MainRouter'
 import { Provider } from 'mobx-react'
 import { createStores } from './stores/index'
