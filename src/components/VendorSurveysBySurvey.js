@@ -24,7 +24,7 @@ class VendorSurveysBySurvey extends Component {
     const vendorSurveys = this.props.store.qiStore.selectedVendorSurveys
 
     return(
-      <div style={{padding:30, backgroundColor: 'white'}}>
+      <div className='container'>
         <PageHeader>Performance by Survey
         <Badge appearance="primary">{vendorSurveys.length}</Badge>
         </PageHeader>

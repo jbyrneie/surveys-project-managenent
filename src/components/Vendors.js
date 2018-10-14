@@ -12,6 +12,9 @@ import PageTitle from './PageTitle';
 import _ from 'lodash';
 import {STATUS} from '../lib/utils'
 
+// Custom Styles
+import '../css/qi.css'
+
 class Vendors extends Component {
   constructor(props) {
     super(props);
@@ -38,10 +41,10 @@ class Vendors extends Component {
   render() {
     const vendors = this.props.store.qiStore.vendors
     return (
-      <div style={{padding:30, backgroundColor: 'white'}}>
+      <div className='container'>
         <table>
           <thead>
-            <tr style={{borderBottom: '1px solid #ddd', height:'4em'}}>
+            <tr className='table-row'>
               <th>VENDOR</th>
               <th>COMPLETED</th>
               <th>EXCLUDED</th>
@@ -54,7 +57,7 @@ class Vendors extends Component {
             const percentExcluded = Math.round((vendor.excluded/(vendor.completed + vendor.excluded))*100)
             const percentExcludedSymbol = `${percentExcluded}%`
             return (
-              <tr key={index} onClick={this._vendorSurveys.bind(this, index, vendors)} style={{borderBottom: '1px solid #ddd', height:'4em'}}>
+              <tr className='table-row' key={index} onClick={this._vendorSurveys.bind(this, index, vendors)}>
                 <td>{vendor.name}</td>
                 <td><Progress
                         theme={{
@@ -68,15 +71,15 @@ class Vendors extends Component {
                       />
                 </td>
                 <td><Progress
-                                              theme={{
-                                                error: {
-                                                  color: 'red',
-                                                  symbol: percentExcludedSymbol
-                                                },
-                                              }}
-                                              percent={percentExcluded}
-                                              status="error"
-                                            />
+                        theme={{
+                          error: {
+                            color: 'red',
+                            symbol: percentExcludedSymbol
+                          },
+                        }}
+                        percent={percentExcluded}
+                        status="error"
+                      />
                 </td>
               </tr>
             )}

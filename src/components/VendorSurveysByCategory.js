@@ -70,7 +70,7 @@ class VendorSurveysByCategory extends Component {
     const categories = this._getCategories(vendorSurveys)
 
     return(
-      <div style={{padding:30, backgroundColor: 'white'}}>
+      <div className='container'>
         <PageHeader>Performance by Category
         <Badge appearance="primary">{vendorSurveys.length}</Badge>
         </PageHeader>
