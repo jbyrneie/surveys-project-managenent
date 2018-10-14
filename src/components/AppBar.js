@@ -11,7 +11,7 @@ import '../css/qi.css'
 
 class AppBar extends Component {
   static contextTypes = {
-    router: PropTypes.func.isRequired
+    router: PropTypes.object,
   };
   
   constructor(props, context) {
@@ -20,8 +20,7 @@ class AppBar extends Component {
   
   _surveyLead(event) {
     console.log('New Survey clicked....');
-    //this.context.router.transitionTo('/settings')
-    this.props.history('/settings')
+    this.context.router.push('/lead')
   }
   
   render() {
