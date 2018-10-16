@@ -23,17 +23,17 @@ export function daysDuration(startDate) {
 export function mapStatusToString(status) {
   switch(status) {
     case STATUS.LEAD:
-      return {label: 'LEAD', color: 'red'}
+      return {label: 'LEAD', color: '#8adfcc'}
     case STATUS.QUOTE:
-      return {label: 'QUOTE', color: 'orange'}
+      return {label: 'QUOTE', color: '#f19fc1'}
     case STATUS.PROGRAMMING:
-      return {label: 'PROGRAMMING', color: 'lightgrey'}
+      return {label: 'PROGRAMMING', color: '#f5b857'}
     case STATUS.FEASABILITY:
       return {label: 'FEASABILITY', color: 'blue'}
     case STATUS.FIELDING:
-      return {label: 'FIELDING', color: 'indigo'}
+      return {label: 'FIELDING', color: '#59b6f6'}
     default:
-      return {label: 'UNKNOWN', color: 'violet'}
+      return {label: 'UNKNOWN', color: 'red'}
   }
 }
 

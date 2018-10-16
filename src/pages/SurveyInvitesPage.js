@@ -4,14 +4,14 @@ import { observer, inject } from 'mobx-react'
 import AppBar from '../components/AppBar';
 import SurveyDetails from '../components/SurveyDetails'
 
-class SurveyDetailsPage extends Component {
+class SurveyInvitesPage extends Component {
   render() {
     return (
       <div>
-        <AppBar title='Survey Details'/>
+        <AppBar title='Survey Invites'/>
         <SurveyDetails tab='invites'/>
       </div>
     );
   }
 }
-export default inject((allStores) => ({ ...allStores }))(observer(SurveyDetailsPage))
+export default inject((allStores) => ({ ...allStores }))(observer(SurveyInvitesPage))

@@ -46,11 +46,11 @@ class MyTasks extends Component {
   static contextTypes = {
     router: PropTypes.object,
   };
-  
+
   constructor(props, context) {
     super(props, context);
   }
-  
+
   componentWillMount() {
     const ele = document.getElementById('ipl-progress-indicator')
     if (ele) {
@@ -63,7 +63,7 @@ class MyTasks extends Component {
 
     return(
       <div className='container'>
-        <PageHeader>My Tasks 
+        <PageHeader>My Tasks
         <Badge appearance="primary" style={{padding: '0.6em 3em', margin: '0.6em 1em'}}>{myTasks.length}</Badge>
         </PageHeader>
         <table>
@@ -85,7 +85,7 @@ class MyTasks extends Component {
                 <tr className='table-row' key={index} onClick={surveyDetails.bind(this, index, myTasks)}>
                   {task.rush?
                     <td>
-                      <span className='label' style={{backgroundColor: 'lightgrey'}}>RUSH</span>&nbsp;{task.project}
+                      <span className='label' style={{backgroundColor: '#ed6a80'}}>RUSH</span>&nbsp;{task.project}
                     </td>
                     :
                     <td>{task.project}</td>
@@ -101,7 +101,7 @@ class MyTasks extends Component {
             )})}
           </tbody>
         </table>
-      </div>  
+      </div>
     )
   }
 }
