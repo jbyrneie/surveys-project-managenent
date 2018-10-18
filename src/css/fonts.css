@@ -17,7 +17,6 @@
        url('../fonts/ProximaNova-Thin-webfont.woff') format('woff'), /* Modern Browsers */
        url('../fonts/ProximaNova-Thin-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
        url('../fonts/ProximaNova-Thin-webfont.svg#d41d8cd98f00b204e9800998ecf8427e') format('svg'); /* Legacy iOS */
-
   font-style:   normal;
   font-weight:  200;
 }

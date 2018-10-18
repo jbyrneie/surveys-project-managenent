@@ -5,24 +5,20 @@ import { Route , withRouter} from 'react-router-dom';
 import { browserHistory } from 'react-router';
 import Button, { ButtonGroup } from '@atlaskit/button';
 
-// Custom styles
-import '../css/fonts.css'
-import '../css/qi.css'
-
 class AppBar extends Component {
   static contextTypes = {
     router: PropTypes.object,
   };
-  
+
   constructor(props, context) {
     super(props, context);
   }
-  
+
   _surveyLead(event) {
     console.log('New Survey clicked....');
     this.context.router.push('/lead')
   }
-  
+
   render() {
     console.log('AppBar render.....');
     return(

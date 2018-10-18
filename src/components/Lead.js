@@ -6,13 +6,20 @@ import TextField from '@atlaskit/field-text'
 import TextArea from '@atlaskit/field-text-area'
 import Button from '@atlaskit/button';
 import SingleSelect from '@atlaskit/single-select';
-import {
-  DropdownMenuStateless,
-  DropdownItemGroupRadio,
-  DropdownItemRadio,
-} from '@atlaskit/dropdown-menu';
-//import TypeAhead from './TypeAhead'
-//import { getClientSuggestions, getContactSuggestions } from '../lib/suggestions'
+import AsyncSelect from 'react-select/lib/Async'
+import { Field } from '@atlaskit/form';
+import Select from '@atlaskit/select';
+
+const filterCities = (inputValue: string) =>
+  cities.filter(i => i.label.toLowerCase().includes(inputValue.toLowerCase()));
+
+const promiseOptions = inputValue =>
+  new Promise(resolve => {
+    setTimeout(() => {
+      console.log('promiseOptions: ', inputValue);
+      resolve(filterCities(inputValue));
+    }, 1000);
+  });
 
 const priorities = [
   {
@@ -24,7 +31,51 @@ const priorities = [
   },
 ];
 
-class Quote extends Component {
+const clientContact: Array<{ label: string, value: any }> = [
+  { label: 'Adelaide', value: 'adelaide', extra: 'extra' },
+  { label: 'Brisbane1', value: 'brisbane1' },
+  { label: 'Brisbane2', value: 'brisbane2' },
+  { label: 'Brisbane3', value: 'brisbane3' },
+  { label: 'Canberra', value: 'canberra' },
+  { label: 'Darwin', value: 'darwin' },
+  { label: 'Hobart', value: 'hobart' },
+  { label: 'Melbourne', value: 'melbourne' },
+  { label: 'Perth', value: 'perth' },
+  { label: 'Sydney', value: 'sydney' },
+];
+
+const cities: Array<{ label: string, value: any }> = [
+  { label: 'Adelaide', value: 'adelaide', extra: 'extra' },
+  { label: 'Brisbane', value: 'brisbane' },
+  { label: 'Brisbane1', value: 'brisbane1' },
+  { label: 'Brisbane2', value: 'brisbane2' },
+  { label: 'Brisbane3', value: 'brisbane3' },
+  { label: 'Canberra', value: 'canberra' },
+  { label: 'Darwin', value: 'darwin' },
+  { label: 'Hobart', value: 'hobart' },
+  { label: 'Melbourne', value: 'melbourne' },
+  { label: 'Perth', value: 'perth' },
+  { label: 'Sydney', value: 'sydney' },
+];
+
+const clientContact1 = [
+  {
+    items: [
+      { content: 'Adam1', value: 'Adam1' },
+      { content: 'Adam2', value: 'Adam2' },
+      { content: 'Adaaa', value: 'Adaaa' },
+      { content: 'Jack1', value: 'Jack1' },
+      { content: 'Jack1', value: 'Jack1' },
+      { content: 'Jack1', value: 'Jack1' },
+      { content: 'Jack1', value: 'Jack1' },
+      { content: 'Jack1', value: 'Jack1' },
+      { content: 'Jack1', value: 'Jack1' },
+      { content: 'Jack1', value: 'Jack1' }
+    ],
+  },
+];
+
+class Lead extends Component {
   constructor(props) {
     super(props);
 
@@ -66,6 +117,13 @@ class Quote extends Component {
     })
   }
 
+  handleInputChange = (newValue: string) => {
+    const inputValue = newValue.replace(/\W/g, '');
+    this.setState({ inputValue });
+    console.log('handleInputChangexxx: ', inputValue);
+    return inputValue;
+  };
+
   _getClientSuggestions(value) {
     console.log('_getClientSuggestions: ', value);
     //return getClientSuggestions(value)
@@ -87,34 +145,34 @@ class Quote extends Component {
     );
   };
 
-  _handleClientNameChange(value) {
-    console.log('handleClientNameChange: ', value);
+  _handleClientNameChange(clientName) {
+    console.log('handleClientNameChange: ', clientName);
     this.setState(
-      { client_name: value },
+      { client_name: clientName.value },
       () => this.setState({valid: this._validate()})
     );
   };
 
-  _handleContactNameChange(value) {
-    console.log('handleContactNameChange: ', value);
+  _handleClientContactChange(contactName) {
+    console.log('handleContactNameChange: ', contactName);
     this.setState(
-      { client_contact: value },
+      { client_contact: contactName.value },
       () => this.setState({valid: this._validate()})
     );
   };
 
-  _handleResearchManagerChange(value) {
-    console.log('_handleResearchManagerChange: ', value);
+  _handleResearchManagerChange(researchManager) {
+    console.log('_handleResearchManagerChange: ', researchManager);
     this.setState(
-      { research_manager: value },
+      { research_manager: researchManager.value },
       () => this.setState({valid: this._validate()})
     );
   };
 
-  _handleSurveyManagerChange(value) {
-    console.log('_handleSurveyManagerChange: ', value);
+  _handleSurveyManagerChange(surveyManager) {
+    console.log('_handleSurveyManagerChange: ', surveyManager);
     this.setState(
-      { survey_manager: value },
+      { survey_manager: surveyManager.value },
       () => this.setState({valid: this._validate()})
     );
   };
@@ -166,84 +224,73 @@ class Quote extends Component {
     });
   }
 
+  _handleInputChange = (newValue: string) => {
+    console.log('_handleInputChange:', newValue)
+    return newValue;
+  };
+
   _closeSnackBar = (event) => {
     this.setState({ snackBarOpen: false });
   };
 
   render() {
-    const DropDown = styled.div`
-      display: flex;
-      flex-direction: column;
-      margin-top: 2.6em;
-    `;
-    const Quote = styled.div`
-      display: flex;
-      flex-direction: column;
-      border: 0.2em solid #ddd;
-      background-color: yellow;
-    `;
-
     return(
       <div className='container'>
         <Grid>
-          <GridColumn medium={9}>
+          <GridColumn medium={12}>
             <div style={{fontSize:18, fontWeight:900, marginTop: '1em'}}>Client Information</div>
           </GridColumn>
-          <GridColumn medium={1}>
-          </GridColumn>
-          <GridColumn medium={2}>
-            <Quote>
-              <div style={{fontSize:18, fontWeight:900, marginTop: '1em'}}>Quote Details</div>
-              xxx vfjnskvlas vjsaklvjsakl vjsakjvs vjsaklvjs vjsaklkvjkl vsajklvj
-            </Quote>
-          </GridColumn>
         </Grid>
         <Grid>
           <GridColumn medium={4}>
-            <TextField
-              onChange={this._handleChange.bind(this, 'client_name')}
+          <Field label="Client Name *" invalidMessage='You need to select a Client Name' isInvalid={this.state.clientNameInvalid}>
+            <AsyncSelect
+              onChange={this._handleClientNameChange.bind(this)}
               placeholder="Start typing Client Name"
-              label="Client Name "
-              isInvalid = {this.state.clientNameInvalid}
-              required
-              shouldFitContainer
+              cacheOptions
+              defaultOptions
+              loadOptions={promiseOptions}
             />
+          </Field>
           </GridColumn>
           <GridColumn medium={1}>
           </GridColumn>
           <GridColumn medium={4}>
-            <TextField
-              onChange={this._handleChange.bind(this, 'client_contact')}
-              placeholder="Start typing Client Contact"
-              label="Client Contact "
-              isInvalid = {this.state.clientContactInvalid}
-              required
-              shouldFitContainer
-            />
+            <Field label="Client Contact *" invalidMessage='You need to select a Client Contact' isInvalid={this.state.clientContactInvalid}>
+              <AsyncSelect
+                onChange={this._handleClientContactChange.bind(this)}
+                defaultOptions
+                loadOptions={promiseOptions}
+                options={cities}
+                placeholder="Start typing Client Contact"
+              />
+            </Field>
           </GridColumn>
         </Grid>
         <Grid>
           <GridColumn medium={4}>
-            <TextField
-              onChange={this._handleChange.bind(this, 'research_manager')}
+          <Field label="Research Manager *" invalidMessage='You need to select a Research Manager' isInvalid={this.state.researchManagerInvalid}>
+            <AsyncSelect
+              onChange={this._handleResearchManagerChange.bind(this)}
+              defaultOptions
+              loadOptions={promiseOptions}
+              options={cities}
               placeholder="Start typing Research Manager"
-              isInvalid = {this.state.researchManagerInvalid}
-              required
-              label="Client Name"
-              shouldFitContainer
             />
+          </Field>
           </GridColumn>
           <GridColumn medium={1}>
           </GridColumn>
           <GridColumn medium={4}>
-            <TextField
-              onChange={this._handleChange.bind(this, 'survey_manager')}
-              placeholder="Start typing Survey Manager"
-              label="Client Contact "
-              isInvalid = {this.state.surveyManagerInvalid}
-              required
-              shouldFitContainer
-            />
+            <Field label="Survey Manager *" invalidMessage='You need to select a Survey Manager' isInvalid={this.state.surveyManagerInvalid}>
+              <AsyncSelect
+                onChange={this._handleSurveyManagerChange.bind(this)}
+                defaultOptions
+                loadOptions={promiseOptions}
+                options={cities}
+                placeholder="Start typing Survey Manager"
+              />
+            </Field>
           </GridColumn>
         </Grid>
         <Grid>
@@ -265,14 +312,11 @@ class Quote extends Component {
           <GridColumn medium={1}>
           </GridColumn>
           <GridColumn medium={4}>
-            <DropDown>
-              <SingleSelect
-                items={priorities}
-                placeholder="Select Priority"
-                noMatchesFound="Empty items"
-                defaultSelected={priorities[0].items[1]}
-              />
-            </DropDown>
+            <SingleSelect
+              items={priorities}
+              label="Priority"
+              defaultSelected={priorities[0].items[1]}
+            />
           </GridColumn>
         </Grid>
         <Grid>
@@ -304,4 +348,4 @@ class Quote extends Component {
   }
 }
 
-export default inject((allStores) => ({ ...allStores }))(observer(Quote))
+export default inject((allStores) => ({ ...allStores }))(observer(Lead))

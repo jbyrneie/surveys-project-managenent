@@ -63,7 +63,7 @@ export default class SideBar extends React.Component {
             return (
               <Link key={url} to={url}>
                 <AkNavigationItem
-                  icon={<Icon label={title} size="medium" />}
+                  icon={<Icon label={title} size="large" />}
                   text={title}
                   isSelected={this.context.router.isActive(url, true)}
                 />

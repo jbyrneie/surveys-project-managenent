@@ -14,6 +14,10 @@ import {
   DropdownItemGroupRadio,
   DropdownItemRadio,
 } from '@atlaskit/dropdown-menu';
+import {
+  Checkbox,
+  CheckboxIcon
+} from '@atlaskit/checkbox';
 import _ from 'lodash'
 import moment from 'moment'
 
@@ -31,7 +35,8 @@ class SurveyDetails extends Component {
       populationFilter: 'All Populations',
       statusFilter: 'All Statuses',
       survey: {},
-      filteredSurvey: {}
+      filteredSurvey: {},
+      isChecked: false,
     };
   }
 
@@ -130,6 +135,15 @@ class SurveyDetails extends Component {
     this.setState({filteredSurvey: filtered, statusFilter: event.target.value})
   }
 
+  _onCheckboxChange = (event: any) => {
+    this.setState({
+      isChecked: !this.state.isChecked,
+      onChangeResult: `onChange Event with target.checked: ${
+        event.target.checked
+      }`,
+    });
+  };
+
   render() {
     const survey = this.state.filteredSurvey
     const population = this._filterPopulation(survey.cms)
@@ -208,11 +222,19 @@ class SurveyDetails extends Component {
             </span>
           </div>
         </div>
-        <div style={{marginTop: 60}}>
+        <div style={{marginTop: '7em'}}>
         <table>
           <thead>
             <tr className='table-row'>
-              <th>Checkbox</th>
+              <th style={{display: 'inline-block'}}>
+                <span>
+                  <Checkbox
+                    isChecked={this.state.isChecked}
+                    onChange={this._onCheckboxChange}
+                  />
+                </span>
+                <span>Checkbox</span>
+              </th>
               <th>LOCATION</th>
               <th>POPULATION</th>
               <th>RATE</th>
@@ -225,7 +247,12 @@ class SurveyDetails extends Component {
               <tr className='table-row' key={index}>
                 <td>
                   <div>
-                    <span>checkbox</span>
+                    <span>
+                      <Checkbox
+                        isChecked={this.state.isChecked}
+                        onChange={this._onCheckboxChange}
+                      />
+                    </span>
                     <span>picon</span>
                   </div>
                 </td>

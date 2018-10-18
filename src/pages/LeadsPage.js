@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react'
-import Vendors from '../components/Vendors';
 import AppBar from '../components/AppBar';
+import Lead from '../components/Lead';
 
-class LeadsPage extends Component {  
+class LeadsPage extends Component {
   render() {
     return (
       <div>
         <AppBar title='New Lead'/>
+        <Lead />
       </div>
     );
   }
