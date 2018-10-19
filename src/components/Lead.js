@@ -9,15 +9,33 @@ import SingleSelect from '@atlaskit/single-select';
 import AsyncSelect from 'react-select/lib/Async'
 import { Field } from '@atlaskit/form';
 import Select from '@atlaskit/select';
+import { getClientSuggestions, getContactSuggestions, getRMSuggestions} from '../lib/suggestions'
 
-const filterCities = (inputValue: string) =>
-  cities.filter(i => i.label.toLowerCase().includes(inputValue.toLowerCase()));
-
-const promiseOptions = inputValue =>
+const clientNameOptions = inputValue =>
   new Promise(resolve => {
     setTimeout(() => {
-      console.log('promiseOptions: ', inputValue);
-      resolve(filterCities(inputValue));
+      resolve(getClientSuggestions(inputValue));
+    }, 1000);
+  });
+
+const clientContactOptions = inputValue =>
+  new Promise(resolve => {
+    setTimeout(() => {
+      resolve(getContactSuggestions(inputValue));
+    }, 1000);
+  });
+
+const researchManagerOptions = inputValue =>
+  new Promise(resolve => {
+    setTimeout(() => {
+      resolve(getRMSuggestions(inputValue));
+    }, 1000);
+  });
+
+const surveyManagerOptions = inputValue =>
+  new Promise(resolve => {
+    setTimeout(() => {
+      resolve(getRMSuggestions(inputValue));
     }, 1000);
   });
 
@@ -27,50 +45,6 @@ const priorities = [
       { content: 'Low', value: 'Low' },
       { content: 'Medium', value: 'Medium' },
       { content: 'High', value: 'High' },
-    ],
-  },
-];
-
-const clientContact: Array<{ label: string, value: any }> = [
-  { label: 'Adelaide', value: 'adelaide', extra: 'extra' },
-  { label: 'Brisbane1', value: 'brisbane1' },
-  { label: 'Brisbane2', value: 'brisbane2' },
-  { label: 'Brisbane3', value: 'brisbane3' },
-  { label: 'Canberra', value: 'canberra' },
-  { label: 'Darwin', value: 'darwin' },
-  { label: 'Hobart', value: 'hobart' },
-  { label: 'Melbourne', value: 'melbourne' },
-  { label: 'Perth', value: 'perth' },
-  { label: 'Sydney', value: 'sydney' },
-];
-
-const cities: Array<{ label: string, value: any }> = [
-  { label: 'Adelaide', value: 'adelaide', extra: 'extra' },
-  { label: 'Brisbane', value: 'brisbane' },
-  { label: 'Brisbane1', value: 'brisbane1' },
-  { label: 'Brisbane2', value: 'brisbane2' },
-  { label: 'Brisbane3', value: 'brisbane3' },
-  { label: 'Canberra', value: 'canberra' },
-  { label: 'Darwin', value: 'darwin' },
-  { label: 'Hobart', value: 'hobart' },
-  { label: 'Melbourne', value: 'melbourne' },
-  { label: 'Perth', value: 'perth' },
-  { label: 'Sydney', value: 'sydney' },
-];
-
-const clientContact1 = [
-  {
-    items: [
-      { content: 'Adam1', value: 'Adam1' },
-      { content: 'Adam2', value: 'Adam2' },
-      { content: 'Adaaa', value: 'Adaaa' },
-      { content: 'Jack1', value: 'Jack1' },
-      { content: 'Jack1', value: 'Jack1' },
-      { content: 'Jack1', value: 'Jack1' },
-      { content: 'Jack1', value: 'Jack1' },
-      { content: 'Jack1', value: 'Jack1' },
-      { content: 'Jack1', value: 'Jack1' },
-      { content: 'Jack1', value: 'Jack1' }
     ],
   },
 ];
@@ -120,18 +94,24 @@ class Lead extends Component {
   handleInputChange = (newValue: string) => {
     const inputValue = newValue.replace(/\W/g, '');
     this.setState({ inputValue });
-    console.log('handleInputChangexxx: ', inputValue);
     return inputValue;
   };
 
   _getClientSuggestions(value) {
-    console.log('_getClientSuggestions: ', value);
-    //return getClientSuggestions(value)
+    return getClientSuggestions(value)
   }
 
   _getContactSuggestions(value) {
     console.log('_getContactSuggestions: ', value);
-    //return getContactSuggestions(value)
+    return getContactSuggestions(value)
+  }
+
+  _getResearchManagerSuggestions(value) {
+    return getRMSuggestions(value)
+  }
+
+  _getSurveyManagerSuggestions(value) {
+    return getRMSuggestions(value)
   }
 
   _handleChange(field, event) {
@@ -186,7 +166,7 @@ class Lead extends Component {
   };
 
   _validate() {
-    console.log('_validate client: %s contact: %s',this.state.client_name, this.state.client_contact);
+    console.log('_validate client: %s contact: %s rezearchManager: %s surveyManager: %s',this.state.client_name, this.state.client_contact, this.state.research_manager, this.state.survey_manager);
 
     if (this.state.saveInvoked)
     this.setState({
@@ -249,7 +229,7 @@ class Lead extends Component {
               placeholder="Start typing Client Name"
               cacheOptions
               defaultOptions
-              loadOptions={promiseOptions}
+              loadOptions={clientNameOptions}
             />
           </Field>
           </GridColumn>
@@ -260,8 +240,7 @@ class Lead extends Component {
               <AsyncSelect
                 onChange={this._handleClientContactChange.bind(this)}
                 defaultOptions
-                loadOptions={promiseOptions}
-                options={cities}
+                loadOptions={clientContactOptions}
                 placeholder="Start typing Client Contact"
               />
             </Field>
@@ -273,8 +252,7 @@ class Lead extends Component {
             <AsyncSelect
               onChange={this._handleResearchManagerChange.bind(this)}
               defaultOptions
-              loadOptions={promiseOptions}
-              options={cities}
+              loadOptions={researchManagerOptions}
               placeholder="Start typing Research Manager"
             />
           </Field>
@@ -286,8 +264,7 @@ class Lead extends Component {
               <AsyncSelect
                 onChange={this._handleSurveyManagerChange.bind(this)}
                 defaultOptions
-                loadOptions={promiseOptions}
-                options={cities}
+                loadOptions={surveyManagerOptions}
                 placeholder="Start typing Survey Manager"
               />
             </Field>

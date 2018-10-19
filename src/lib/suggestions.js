@@ -1,120 +1,73 @@
 import deburr from 'lodash/deburr';
 
 const client_suggestions = [
-  { label: 'A1 Mountain Funds' },
-  { label: 'A2 Mountain Funds' },
-  { label: 'A3 Mountain Funds' },
-  { label: 'A4 Mountain Funds' },
-  { label: 'A5 Mountain Funds' },
-  { label: 'B1 Mountain Funds' },
-  { label: 'b2 Mountain Funds' },
-  { label: 'b3 Mountain Funds' },
-  { label: 'Blue Mountain Funds' },
-  { label: 'Clear Mountain Funds' },
-  { label: 'Dark Mountain Funds' },
-  { label: 'Every Mountain Funds' },
-  { label: 'Fine Mountain Funds' },
-  { label: 'Glorious Mountain Funds' },
-  { label: 'High Mountain Funds' },
-  { label: 'Ignite Mountain Funds' },
-  { label: 'Java Mountain Funds' },
-  { label: 'Kape Mountain Funds' },
-  { label: 'Long Mountain Funds' },
-  { label: 'Mountain Funds' },
-  { label: 'New Mountain Funds' },
-  { label: 'Old Mountain Funds' },
-  { label: 'Pure Mountain Funds' },
-  { label: 'Quiet Mountain Funds' },
-  { label: 'Real Mountain Funds' },
-  { label: 'Silent Mountain Funds' },
-  { label: 'True Mountain Funds' },
-  { label: 'Up Mountain Funds' },
-  { label: 'Very Mountain Funds' },
-  { label: 'White Mountain Funds' },
-  { label: 'Xylon Mountain Funds' },
-  { label: 'Zebra Mountain Funds' },
+  { label: 'A1 Mountain Funds', value: '1'},
+  { label: 'A2 Mountain Funds', value: '1'},
+  { label: 'A3 Mountain Funds', value: '1'},
+  { label: 'A4 Mountain Funds', value: '1'},
+  { label: 'A5 Mountain Funds', value: '1'},
+  { label: 'B1 Mountain Funds', value: '1'},
+  { label: 'b2 Mountain Funds', value: '1'},
+  { label: 'b3 Mountain Funds', value: '1'},
+  { label: 'Blue Mountain Funds', value: '1'},
+  { label: 'Clear Mountain Funds', value: '1'},
+  { label: 'Dark Mountain Funds', value: '1'},
+  { label: 'Every Mountain Funds', value: '1'},
+  { label: 'Fine Mountain Funds', value: '1'},
+  { label: 'Glorious Mountain Funds', value: '1'},
+  { label: 'High Mountain Funds', value: '1'},
+  { label: 'Ignite Mountain Funds', value: '1'},
+  { label: 'Java Mountain Funds', value: '1'},
+  { label: 'Kape Mountain Funds', value: '1'},
+  { label: 'Long Mountain Funds', value: '1'},
+  { label: 'Mountain Funds', value: '1'},
+  { label: 'New Mountain Funds', value: '1'},
+  { label: 'Old Mountain Funds', value: '1'},
+  { label: 'Pure Mountain Funds', value: '1'},
+  { label: 'Quiet Mountain Funds', value: '1'},
+  { label: 'Real Mountain Funds', value: '1'},
+  { label: 'Silent Mountain Funds', value: '1'},
+  { label: 'True Mountain Funds', value: '1'},
+  { label: 'Up Mountain Funds', value: '1'},
+  { label: 'Very Mountain Funds', value: '1'},
+  { label: 'White Mountain Funds', value: '1'},
+  { label: 'Xylon Mountain Funds', value: '1'},
+  { label: 'Zebra Mountain Funds', value: '1'},
 ];
 
 const contact_suggestions = [
-  { label: 'Adam' },
-  { label: 'Andrew' },
-  { label: 'Alfonsis' },
-  { label: 'Brian' },
-  { label: 'Brendan' },
-  { label: 'Jack' },
-  { label: 'James' },
-  { label: 'John' },
+  { label: 'Adam', value:'1'},
+  { label: 'Andrew', value:'1'},
+  { label: 'Alfonsis', value:'1'},
+  { label: 'Brian', value:'1'},
+  { label: 'Brendan', value:'1'},
+  { label: 'Jack', value:'1'},
+  { label: 'James', value:'1'},
+  { label: 'John', value:'1'},
 ];
 
 const rm_suggestions = [
-  { label: 'Adam RM' },
-  { label: 'Andrew RM' },
-  { label: 'Alfonsis RM' },
-  { label: 'Brian RM' },
-  { label: 'Brendan RM' },
-  { label: 'Jack RM' },
-  { label: 'James RM' },
-  { label: 'John RM' },
+  { label: 'Adam RM', value:'1'},
+  { label: 'Andrew RM', value:'1'},
+  { label: 'Alfonsis RM', value:'1'},
+  { label: 'Brian RM', value:'1'},
+  { label: 'Brendan RM', value:'1'},
+  { label: 'Jack RM', value:'1'},
+  { label: 'James RM', value:'1'},
+  { label: 'John RM', value:'1'},
 ];
 
 export function getClientSuggestions(value) {
   console.log('getClientSuggestions: ', value);
-  const inputValue = deburr(value.trim()).toLowerCase();
-  const inputLength = inputValue.length;
-  let count = 0;
-
-  return inputLength === 0
-    ? []
-    : client_suggestions.filter(suggestion => {
-        console.log('suggestion: ', suggestion);
-        const keep =
-          count < 5 && suggestion.label.slice(0, inputLength).toLowerCase() === inputValue;
-
-        if (keep) {
-          count += 1;
-        }
-
-        console.log('keep: ', keep);
-        return keep;
-      });
+  return client_suggestions.filter(i => i.label.toLowerCase().includes(value.toLowerCase()));
 }
 
 export function getContactSuggestions(value) {
   console.log('getContactSuggestions: ', value);
-  const inputValue = deburr(value.trim()).toLowerCase();
-  const inputLength = inputValue.length;
-  let count = 0;
-
-  return inputLength === 0
-    ? []
-    : contact_suggestions.filter(suggestion => {
-        const keep =
-          count < 5 && suggestion.label.slice(0, inputLength).toLowerCase() === inputValue;
-
-        if (keep) {
-          count += 1;
-        }
-
-        return keep;
-      });
+  return contact_suggestions.filter(i => i.label.toLowerCase().includes(value.toLowerCase()));
 }
 
 export function getRMSuggestions(value) {
   console.log('getRMSuggestions: ', value);
-  const inputValue = deburr(value.trim()).toLowerCase();
-  const inputLength = inputValue.length;
-  let count = 0;
-
-  return inputLength === 0
-    ? []
-    : rm_suggestions.filter(suggestion => {
-        const keep =
-          count < 5 && suggestion.label.slice(0, inputLength).toLowerCase() === inputValue;
-
-        if (keep) {
-          count += 1;
-        }
-
-        return keep;
-      });
+  return rm_suggestions.filter(i => i.label.toLowerCase().includes(value.toLowerCase()));
 }
