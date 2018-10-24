@@ -24,6 +24,7 @@ class ProgrammingPage extends Component {
     if (ele) {
       ele.outerHTML = ''
     }
+    this.props.store.qiStore.setSelectedPage('programming')
   }
 
   render() {

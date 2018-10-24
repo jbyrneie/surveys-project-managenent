@@ -7,7 +7,7 @@ import './css/fonts.css'
 import './css/qi.css'
 
 const stores = createStores()
-
+console.log('Stores created.....');
 
 // eslint-disable-next-line no-undef
 //ReactDOM.render(<MainRouter />, document.getElementById('app-root'));

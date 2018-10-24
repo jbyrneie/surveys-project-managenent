@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react'
 import { Link } from 'react-router';
+import { observer, inject } from 'mobx-react'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faKeyboard, faPuzzlePiece, faSearch, faChartLine,faShoppingBag } from '@fortawesome/free-solid-svg-icons'
@@ -26,7 +27,7 @@ import {navigate} from '../lib/utils'
 
 library.add(faHome, faKeyboard, faPuzzlePiece, faSearch, faChartLine, faShoppingBag)
 
-export default class SideBar extends React.Component {
+class SideBar extends Component {
   static contextTypes = {
     navOpenState: PropTypes.object,
     router: PropTypes.object,
@@ -46,7 +47,7 @@ export default class SideBar extends React.Component {
   }
 
   render() {
-    const selectedPage = 'feasability'; //this.props.store.qiStore.selectedPage
+    const selectedPage = this.props.store.qiStore.selectedPage
     console.log('selectedPage: ', selectedPage);
     console.log('menu: ', this.props.menu);
 
@@ -54,21 +55,23 @@ export default class SideBar extends React.Component {
       <div style={{position: 'relative', backgroundColor: 'white'}}>
         <div style={{fontSize:'48px', color:'#A0A0A0', fontWeight:900, fontSize: '3em', paddingTop:'0.5em', paddingBottom:40, textAlign:"center"}} onClick={navigate.bind(this, '/')}>S</div>
         <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em', paddingTop:'1em'}}>
-          <FontAwesomeIcon icon="home" size='2x' style={{color: !this.props.home?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, '/')}/>
+          <FontAwesomeIcon icon="home" size='2x' style={{color: selectedPage==='home'?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, '/')}/>
         </div>
         <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em'}}>
-          <FontAwesomeIcon style={{color: this.props.programming?'#2db7fc':'#d8dfe5'}} icon="keyboard" size='2x' onClick={navigate.bind(this, 'programming')}/>
+          <FontAwesomeIcon style={{color: selectedPage==='programming'?'#2db7fc':'#d8dfe5'}} icon="keyboard" size='2x' onClick={navigate.bind(this, 'programming')}/>
         </div>
         <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em'}}>
-          <FontAwesomeIcon icon="chart-line" size='2x' style={{color: this.props.reporting?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, 'reporting')}/>
+          <FontAwesomeIcon icon="chart-line" size='2x' style={{color: selectedPage==='reporting'?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, 'reporting')}/>
         </div>
         <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em'}}>
           <FontAwesomeIcon icon="search" size='2x' style={{color: selectedPage==='feasability'?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, 'feasability')}/>
         </div>
         <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em'}}>
-          <FontAwesomeIcon icon="shopping-bag" size='2x' style={{color: this.props.vendors?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, 'vendors')}/>
+          <FontAwesomeIcon icon="shopping-bag" size='2x' style={{color: selectedPage==='vendors'?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, 'vendors')}/>
         </div>
       </div>
     );
   }
 }
+
+export default inject((allStores) => ({ ...allStores }))(observer(SideBar))

@@ -21,6 +21,7 @@ class HomePage extends Component {
     if (ele) {
       ele.outerHTML = ''
     }
+    this.props.store.qiStore.setSelectedPage('home')
   }
 
   render() {

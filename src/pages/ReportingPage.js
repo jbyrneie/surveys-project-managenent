@@ -6,6 +6,14 @@ import Reporting from '../components/Reporting';
 import AppBar from '../components/AppBar';
 
 class ReportingPage extends Component {
+  componentWillMount() {
+    const ele = document.getElementById('ipl-progress-indicator')
+    if (ele) {
+      ele.outerHTML = ''
+    }
+    this.props.store.qiStore.setSelectedPage('reporting')
+  }
+
   render() {
     return (
       <div className='page'>

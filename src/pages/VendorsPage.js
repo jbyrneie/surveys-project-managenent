@@ -5,6 +5,14 @@ import Vendors from '../components/Vendors';
 import AppBar from '../components/AppBar';
 
 class VendorsPage extends Component {
+  componentWillMount() {
+    const ele = document.getElementById('ipl-progress-indicator')
+    if (ele) {
+      ele.outerHTML = ''
+    }
+    this.props.store.qiStore.setSelectedPage('vendors')
+  }
+
   render() {
     return (
       <div className='page'>
