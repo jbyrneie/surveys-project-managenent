@@ -7,7 +7,7 @@ import VendorSurveysBySurvey from '../components/VendorSurveysBySurvey';
 class VendorSurveysPage extends Component {
   render() {
     return (
-      <div>
+      <div className='page'>
         <AppBar title='Vendor Surveys' newSurvey={true}/>
         <VendorSurveysByCategory />
         <VendorSurveysBySurvey />

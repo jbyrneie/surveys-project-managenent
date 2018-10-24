@@ -5,10 +5,10 @@ import Flag, { FlagGroup } from '@atlaskit/flag';
 import Modal from '@atlaskit/modal-dialog';
 import Page from '@atlaskit/page';
 import '@atlaskit/css-reset';
-
 import SideBar from '../components/SideBar';
 
 export default class App extends Component {
+
   state = {
     flags: [],
     isModalOpen: false,
@@ -59,8 +59,7 @@ export default class App extends Component {
     return (
       <div>
         <Page
-          navigationWidth={this.context.navOpenState.width}
-          navigation={<SideBar />}
+          navigation={<SideBar menu={this.props.menu}/>}
         >
           {this.props.children}
         </Page>

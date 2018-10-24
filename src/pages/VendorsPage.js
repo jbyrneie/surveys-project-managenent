@@ -4,10 +4,10 @@ import { observer, inject } from 'mobx-react'
 import Vendors from '../components/Vendors';
 import AppBar from '../components/AppBar';
 
-class VendorsPage extends Component {  
+class VendorsPage extends Component {
   render() {
     return (
-      <div>
+      <div className='page'>
         <AppBar title='Vendors' newSurvey={true}/>
         <Vendors/>
       </div>

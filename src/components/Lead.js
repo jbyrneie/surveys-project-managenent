@@ -9,7 +9,7 @@ import SingleSelect from '@atlaskit/single-select';
 import AsyncSelect from 'react-select/lib/Async'
 import { Field } from '@atlaskit/form';
 import Select from '@atlaskit/select';
-import { getClientSuggestions, getContactSuggestions, getRMSuggestions} from '../lib/suggestions'
+import { getClientSuggestions, getContactSuggestions, getRMSuggestions, researchManagerOptions, surveyManagerOptions} from '../lib/suggestions'
 
 const clientNameOptions = inputValue =>
   new Promise(resolve => {
@@ -25,19 +25,14 @@ const clientContactOptions = inputValue =>
     }, 1000);
   });
 
+  /*
 const researchManagerOptions = inputValue =>
   new Promise(resolve => {
     setTimeout(() => {
       resolve(getRMSuggestions(inputValue));
     }, 1000);
   });
-
-const surveyManagerOptions = inputValue =>
-  new Promise(resolve => {
-    setTimeout(() => {
-      resolve(getRMSuggestions(inputValue));
-    }, 1000);
-  });
+*/
 
 const priorities = [
   {
@@ -252,7 +247,7 @@ class Lead extends Component {
             <AsyncSelect
               onChange={this._handleResearchManagerChange.bind(this)}
               defaultOptions
-              loadOptions={researchManagerOptions}
+              loadOptions={researchManagerOptions()}
               placeholder="Start typing Research Manager"
             />
           </Field>

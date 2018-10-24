@@ -29,7 +29,7 @@ class VendorSurveysByCategory extends Component {
     });
     return categories
   }
-  
+
   _getStatsByCatgory(category, surveys) {
     let total = 0
     let startTotal = 0
@@ -64,7 +64,7 @@ class VendorSurveysByCategory extends Component {
    console.log('_getStatsByCAtegory: ', JSON.stringify(stats));
    return stats
   }
-  
+
   render() {
     console.log('render reporting.....');
     const vendorSurveys = this.props.store.qiStore.selectedVendorSurveys
@@ -73,7 +73,7 @@ class VendorSurveysByCategory extends Component {
     return(
       <div className='container'>
         <PageHeader>Reporting
-        <Badge appearance="primary">{vendorSurveys.length}</Badge>
+          <span className='bubble'>{vendorSurveys.length}</span>
         </PageHeader>
         <table>
           <thead>
@@ -115,7 +115,7 @@ class VendorSurveysByCategory extends Component {
             )}
           </tbody>
         </table>
-      </div>  
+      </div>
     )
   }
 }

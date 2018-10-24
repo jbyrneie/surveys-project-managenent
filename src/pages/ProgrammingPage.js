@@ -18,7 +18,7 @@ class ProgrammingPage extends Component {
     onCancel: PropTypes.func,
     onClose: PropTypes.func,
   };
-  
+
   componentWillMount() {
     const ele = document.getElementById('ipl-progress-indicator')
     if (ele) {
@@ -28,10 +28,10 @@ class ProgrammingPage extends Component {
 
   render() {
     const tasks = _.filter(this.props.store.qiStore.myTasks, ['status.statusId', STATUS.PROGRAMMING])
-    
+
     return (
-      <div>
-        <AppBar title='Programming' newSurvey={true}/>
+      <div className='page'>
+        <AppBar title='Programming' programming={true} newSurvey={true}/>
         <MyTasks tasks={tasks}/>
         <Programming tasks={tasks}/>
       </div>

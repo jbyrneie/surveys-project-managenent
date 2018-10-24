@@ -16,7 +16,7 @@ stores.qiStore.getMyTasks()
   ReactDOM.render(
     <Provider store={stores}>
         <div>
-          <section style={{backgroundColor: '#F8F8F8'}}>
+          <section>
             <MainRouter/>
           </section>
         </div>

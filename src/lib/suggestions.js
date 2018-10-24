@@ -67,7 +67,37 @@ export function getContactSuggestions(value) {
   return contact_suggestions.filter(i => i.label.toLowerCase().includes(value.toLowerCase()));
 }
 
-export function getRMSuggestions(value) {
+function _getRMSuggestions(value) {
   console.log('getRMSuggestions: ', value);
-  return rm_suggestions.filter(i => i.label.toLowerCase().includes(value.toLowerCase()));
+  const rms = value===undefined?rm_suggestions:rm_suggestions.filter(i => i.label.toLowerCase().includes(value.toLowerCase()));
+  console.log('RMs: %s', JSON.stringify(rms))
+  return rms
+}
+
+export function getRMSuggestions(value) {
+  return _getRMSuggestions(value)
+}
+
+export function researchManagerOptions(inputValue) {
+  console.log('inputValue: ', inputValue);
+  new Promise(resolve => {
+    setTimeout(() => {
+      const rms = _getRMSuggestions(inputValue)
+      //resolve(_getRMSuggestions(inputValue));
+      console.log('resolving researchManagerOptions RMs...: %s', JSON.stringify(rms))
+      resolve(rms)
+    }, 1000);
+  });
+}
+
+export function surveyManagerOptions(inputValue) {
+  new Promise(resolve => {
+    setTimeout(() => {
+      //resolve(_getRMSuggestions(inputValue));
+      const rms = _getRMSuggestions(inputValue)
+      //resolve(_getRMSuggestions(inputValue));
+      console.log('resolving surveyManagerOptions RMs...: %s', JSON.stringify(rms))
+      resolve(rms)
+    }, 1000);
+  });
 }

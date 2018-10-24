@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome, faKeyboard, faPuzzlePiece, faSearch, faChartLine,faShoppingBag } from '@fortawesome/free-solid-svg-icons'
+import { Theme } from '@atlaskit/theme';
+import { AtlaskitThemeProvider } from '@atlaskit/theme';
 import Nav, {
   AkContainerTitle,
   AkCreateDrawer,
@@ -16,62 +21,54 @@ import GraphLineIcon from '@atlaskit/icon/glyph/graph-line';
 import ListIcon from '@atlaskit/icon/glyph/list';
 import CodeIcon from '@atlaskit/icon/glyph/code';
 import atlaskitLogo from '../images/atlaskit.png';
+//import { Home, PieChart, Search, Keyboard, ThumbUp, Store } from '@material-ui/icons'
+import {navigate} from '../lib/utils'
+
+library.add(faHome, faKeyboard, faPuzzlePiece, faSearch, faChartLine, faShoppingBag)
 
 export default class SideBar extends React.Component {
-  state = {
-    navLinks: [
-      ['/', 'Home', HomeFilledIcon],
-      ['/feasability', 'Feasability', SearchIcon],
-      ['/programming', 'Programming', CodeIcon],
-      ['/reporting', 'Reporting', GraphLineIcon],
-      ['/vendors', 'Vendors', ListIcon],
-    ]
-  };
-
   static contextTypes = {
     navOpenState: PropTypes.object,
     router: PropTypes.object,
   };
 
-  openDrawer = (openDrawer) => {
-    this.setState({ openDrawer });
-  };
-
-  shouldComponentUpdate(nextProps, nextContext) {
-    return true;
-  };
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      navLinks: [
+        ['/', 'Home', HomeFilledIcon],
+        ['/feasability', 'Feasability', SearchIcon],
+        ['/programming', 'Programming', CodeIcon],
+        ['/reporting', 'Reporting', GraphLineIcon],
+        ['/vendors', 'Vendors', ListIcon],
+      ]
+    };
+  }
 
   render() {
+    const selectedPage = 'feasability'; //this.props.store.qiStore.selectedPage
+    console.log('selectedPage: ', selectedPage);
+    console.log('menu: ', this.props.menu);
+
     return (
-      <Nav
-        isOpen={this.context.navOpenState.isOpen}
-        width={this.context.navOpenState.width}
-        onResize={this.props.onNavResize}
-        containerHeaderComponent={() => (
-          <AkContainerTitle
-            href="/#"
-            icon={
-              <img alt="atlaskit logo" src={atlaskitLogo} />
-            }
-            text="Surveys"
-          />
-        )}
-      >
-        {
-          this.state.navLinks.map(link => {
-            const [url, title, Icon] = link;
-            return (
-              <Link key={url} to={url}>
-                <AkNavigationItem
-                  icon={<Icon label={title} size="large" />}
-                  text={title}
-                  isSelected={this.context.router.isActive(url, true)}
-                />
-              </Link>
-            );
-          }, this)
-        }
-      </Nav>
+      <div style={{position: 'relative', backgroundColor: 'white'}}>
+        <div style={{fontSize:'48px', color:'#A0A0A0', fontWeight:900, fontSize: '3em', paddingTop:'0.5em', paddingBottom:40, textAlign:"center"}} onClick={navigate.bind(this, '/')}>S</div>
+        <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em', paddingTop:'1em'}}>
+          <FontAwesomeIcon icon="home" size='2x' style={{color: !this.props.home?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, '/')}/>
+        </div>
+        <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em'}}>
+          <FontAwesomeIcon style={{color: this.props.programming?'#2db7fc':'#d8dfe5'}} icon="keyboard" size='2x' onClick={navigate.bind(this, 'programming')}/>
+        </div>
+        <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em'}}>
+          <FontAwesomeIcon icon="chart-line" size='2x' style={{color: this.props.reporting?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, 'reporting')}/>
+        </div>
+        <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em'}}>
+          <FontAwesomeIcon icon="search" size='2x' style={{color: selectedPage==='feasability'?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, 'feasability')}/>
+        </div>
+        <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em'}}>
+          <FontAwesomeIcon icon="shopping-bag" size='2x' style={{color: this.props.vendors?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, 'vendors')}/>
+        </div>
+      </div>
     );
   }
 }

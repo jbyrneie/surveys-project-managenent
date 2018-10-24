@@ -7,7 +7,7 @@ import Lead from '../components/Lead';
 class LeadsPage extends Component {
   render() {
     return (
-      <div>
+      <div className='page'>
         <AppBar title='New Lead'/>
         <Lead />
       </div>

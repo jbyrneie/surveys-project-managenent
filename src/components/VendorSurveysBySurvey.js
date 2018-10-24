@@ -25,7 +25,7 @@ class VendorSurveysBySurvey extends Component {
     return(
       <div className='container'>
         <PageHeader>Performance by Survey
-        <Badge appearance="primary">{vendorSurveys.length}</Badge>
+          <span className='bubble'>{vendorSurveys.length}</span>
         </PageHeader>
         <table>
           <thead>
@@ -41,7 +41,7 @@ class VendorSurveysBySurvey extends Component {
               <th >%</th>
               <th >COMPLETED</th>
               <th >%</th>
-            </tr>        
+            </tr>
           </thead>
           <tbody>
           {vendorSurveys.map((survey, index) => {
@@ -69,7 +69,7 @@ class VendorSurveysBySurvey extends Component {
               )})}
           </tbody>
         </table>
-      </div>  
+      </div>
     )
   }
 }

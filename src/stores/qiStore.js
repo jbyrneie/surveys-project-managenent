@@ -12,10 +12,15 @@ class QiStore {
       vendors: [],
       selectedVendorSurveys: [],
       surveyInfo: {info: 'stuff'},
-      selectedSurvey: {}
+      selectedSurvey: {},
+      selectedPage: 'home'
     });
   }
 
+  setSelectedPage = action((selectedPage) => {
+    this.selectedPage = selectedPage
+  });
+  
   getSurveyInfo = action((cmId) => {
     return this.surveyInfo
   });

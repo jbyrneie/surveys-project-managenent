@@ -7,7 +7,7 @@ import Quote from '../components/Quote'
 class SurveyQuotePage extends Component {
   render() {
     return (
-      <div>
+      <div className='page'>
         <AppBar title='Survey Quote'/>
         <Quote />
       </div>

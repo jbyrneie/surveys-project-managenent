@@ -7,7 +7,7 @@ import SurveyDetails from '../components/SurveyDetails'
 class SurveyPerformancePage extends Component {
   render() {
     return (
-      <div>
+      <div className='page'>
         <AppBar title='Survey Performance'/>
         <SurveyDetails tab='performance'/>
       </div>

@@ -8,39 +8,14 @@ import Page from '@atlaskit/page';
 import PageTitle from '../components/PageTitle'
 import PageHeader from '@atlaskit/page-header';
 import Badge from '@atlaskit/badge';
+import { ThemeProvider } from 'styled-components';
+import { themed, colors } from '@atlaskit/theme';
 import {daysLeft, daysDuration, surveyDetails, mapStatusToAction, getAppearanceFromStatus, mapStatusToString} from '../lib/utils'
 import moment from 'moment'
 import numeral from 'numeral'
 
 // Custom Styles
 import '../css/qi.css'
-
-type MyTheme = {
-  button?: ({ hover: boolean }) => {
-    backgroundColor: string,
-    textColor: string,
-  },
-  lozenge?: ({ hover: boolean }) => {
-    backgroundColor: string,
-    textColor: string,
-  },
-};
-
-const customLozengeTheme = (theme: MyTheme) => ({
-  ...theme,
-  button: state => ({
-    ...(theme.button ? theme.button(state) : null),
-    backgroundColor: state.hover ? 'palevioletred' : 'rebeccapurple',
-  }),
-  lozenge: state => ({
-    ...(theme.button ? theme.button(state) : null),
-    backgroundColor: state.hover ? 'palevioletred' : 'rebeccapurple',
-    padding: state.hover?20:20,
-    lineHeight: state.hover ?'20px':20,
-    margin: state.hover?20:20
-  }),
-});
-
 
 class MyTasks extends Component {
   static contextTypes = {
@@ -60,11 +35,18 @@ class MyTasks extends Component {
 
   render() {
     const myTasks = this.props.store.qiStore.myTasks
+    const theme = {
+      primary: {
+        background: {
+          default: themed({ light: '#8a96a0'}),
+        },
+      },
+    };
 
     return(
       <div className='container'>
         <PageHeader>My Tasks
-        <Badge appearance="primary" style={{padding: '0.6em 3em', margin: '0.6em 1em'}}>{myTasks.length}</Badge>
+          <span className='bubble'>{myTasks.length}</span>
         </PageHeader>
         <table>
           <thead>

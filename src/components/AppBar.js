@@ -3,7 +3,9 @@ import React, { Component } from 'react'
 import { observer, inject} from 'mobx-react'
 import { Route , withRouter} from 'react-router-dom';
 import { browserHistory } from 'react-router';
-import Button, { ButtonGroup } from '@atlaskit/button';
+import { ThemeProvider } from 'styled-components';
+import { themed, colors } from '@atlaskit/theme';
+import Button, { ButtonGroup, themeNamespace } from '@atlaskit/button';
 
 class AppBar extends Component {
   static contextTypes = {
@@ -21,6 +23,14 @@ class AppBar extends Component {
 
   render() {
     console.log('AppBar render.....');
+    const theme = {
+      primary: {
+        background: {
+          default: themed({ light: '#27c972'}),
+        },
+      },
+    };
+
     return(
       <div className='container, appBar'>
         <div>
@@ -28,12 +38,14 @@ class AppBar extends Component {
           {this.props.newSurvey?
             <div className='navBar'>
               <div className='appBarButton'>
-                <Button
-                  appearance="primary"
-                  onClick={this._surveyLead.bind(this)}
-                  onClose={() => { }}
-                >New Lead
-                </Button>
+                <ThemeProvider theme={{ [themeNamespace]: theme }}>
+                  <Button
+                    appearance="primary"
+                    onClick={this._surveyLead.bind(this)}
+                    onClose={() => { }}
+                  >New Lead
+                  </Button>
+                </ThemeProvider>
               </div>
             </div>
             :

@@ -19,11 +19,11 @@ class Feasability extends Component {
   static contextTypes = {
     router: PropTypes.object,
   };
-  
+
   constructor(props, context) {
     super(props, context);
   }
-  
+
   componentWillMount() {
     const ele = document.getElementById('ipl-progress-indicator')
     if (ele) {
@@ -37,7 +37,7 @@ class Feasability extends Component {
     return(
       <div className='container'>
         <PageHeader>Feasability
-        <Badge appearance="primary" style={{padding: '0.6em 3em', margin: '0.6em 1em'}}>{tasks.length}</Badge>
+          <span className='bubble'>{tasks.length}</span>
         </PageHeader>
         <table>
           <thead>
@@ -62,7 +62,7 @@ class Feasability extends Component {
             )})}
           </tbody>
         </table>
-      </div>  
+      </div>
     )
   }
 }

@@ -15,7 +15,7 @@ class HomePage extends Component {
     onCancel: PropTypes.func,
     onClose: PropTypes.func,
   };
-  
+
   componentWillMount() {
     const ele = document.getElementById('ipl-progress-indicator')
     if (ele) {
@@ -25,7 +25,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div>
+      <div className='page'>
         <AppBar title='Surveys' newSurvey={true}/>
         <MyTasks />
       </div>

@@ -25,7 +25,7 @@ class Programming extends Component {
     return(
       <div className='container'>
         <PageHeader>Programming
-        <Badge appearance="primary">{tasks.length}</Badge>
+          <span className='bubble'>{tasks.length}</span>
         </PageHeader>
         <table>
           <thead>
@@ -68,7 +68,7 @@ class Programming extends Component {
             ))}
           </tbody>
         </table>
-      </div>  
+      </div>
     )
   }
 }
