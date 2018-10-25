@@ -1,7 +1,7 @@
 {
-  "name": "atlaskit-starter",
+  "name": "Survey-Managment",
   "version": "1.0.0",
-  "description": "Get your ADG3 on with this sample project using Atlaskit React components",
+  "description": "Everything to manage your Surveys",
   "homepage": "/survey-management/",
   "scripts": {
     "start": "per-env",
@@ -11,7 +11,7 @@
     "eject": "react-scripts eject"
   },
   "keywords": [],
-  "author": "Atlassian",
+  "author": "jbyrne@glgroup.com",
   "license": "ISC",
   "dependencies": {
     "@atlaskit/avatar": "14.0.9",
