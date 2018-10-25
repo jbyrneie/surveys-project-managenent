@@ -1,16 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-import styled from 'styled-components';
-import Lozenge from '@atlaskit/lozenge';
-import Button from '@atlaskit/button';
-import Page from '@atlaskit/page';
-import PageTitle from '../components/PageTitle'
 import PageHeader from '@atlaskit/page-header';
-import Badge from '@atlaskit/badge';
-import {daysLeft, daysDuration, surveyDetails, mapStatusToAction, getAppearanceFromStatus, mapStatusToString} from '../lib/utils'
-import moment from 'moment'
-import numeral from 'numeral'
+import {surveyDetails, mapStatusToString} from '../lib/utils'
 
 // Custom Styles
 import '../css/qi.css'
@@ -19,10 +11,6 @@ class Feasability extends Component {
   static contextTypes = {
     router: PropTypes.object,
   };
-
-  constructor(props, context) {
-    super(props, context);
-  }
 
   componentWillMount() {
     const ele = document.getElementById('ipl-progress-indicator')

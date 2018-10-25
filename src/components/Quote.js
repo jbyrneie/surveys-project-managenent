@@ -6,13 +6,6 @@ import TextField from '@atlaskit/field-text'
 import TextArea from '@atlaskit/field-text-area'
 import Button from '@atlaskit/button';
 import SingleSelect from '@atlaskit/single-select';
-import {
-  DropdownMenuStateless,
-  DropdownItemGroupRadio,
-  DropdownItemRadio,
-} from '@atlaskit/dropdown-menu';
-//import TypeAhead from './TypeAhead'
-//import { getClientSuggestions, getContactSuggestions } from '../lib/suggestions'
 
 const priorities = [
   {

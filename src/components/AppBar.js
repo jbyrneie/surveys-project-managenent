@@ -1,20 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react'
-import { observer, inject} from 'mobx-react'
-import { Route , withRouter} from 'react-router-dom';
-import { browserHistory } from 'react-router';
 import { ThemeProvider } from 'styled-components';
-import { themed, colors } from '@atlaskit/theme';
-import Button, { ButtonGroup, themeNamespace } from '@atlaskit/button';
+import { themed } from '@atlaskit/theme';
+import Button, { themeNamespace } from '@atlaskit/button';
 
 class AppBar extends Component {
   static contextTypes = {
     router: PropTypes.object,
   };
-
-  constructor(props, context) {
-    super(props, context);
-  }
 
   _surveyLead(event) {
     console.log('New Survey clicked....');

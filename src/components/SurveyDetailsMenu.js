@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
 import Tabs from '@atlaskit/tabs';
-import {navigate} from '../lib/utils'
 
 // Custom Styles
 import '../css/qi.css'
@@ -11,10 +10,6 @@ class SurveyDetailsMenu extends Component {
   static contextTypes = {
     router: PropTypes.object,
   };
-
-  constructor(props, context) {
-    super(props, context);
-  }
 
   render() {
     const tabs = [

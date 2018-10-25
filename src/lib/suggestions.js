@@ -57,12 +57,12 @@ const rm_suggestions = [
   { label: 'John RM', value:'1'},
 ];
 
-export function getClientSuggestions(value) {
+function _getClientSuggestions(value) {
   console.log('getClientSuggestions: ', value);
   return client_suggestions.filter(i => i.label.toLowerCase().includes(value.toLowerCase()));
 }
 
-export function getContactSuggestions(value) {
+function _getContactSuggestions(value) {
   console.log('getContactSuggestions: ', value);
   return contact_suggestions.filter(i => i.label.toLowerCase().includes(value.toLowerCase()));
 }
@@ -74,30 +74,32 @@ function _getRMSuggestions(value) {
   return rms
 }
 
-export function getRMSuggestions(value) {
-  return _getRMSuggestions(value)
-}
-
-export function researchManagerOptions(inputValue) {
-  console.log('inputValue: ', inputValue);
+export const researchManagerOptions = inputValue =>
   new Promise(resolve => {
     setTimeout(() => {
-      const rms = _getRMSuggestions(inputValue)
-      //resolve(_getRMSuggestions(inputValue));
-      console.log('resolving researchManagerOptions RMs...: %s', JSON.stringify(rms))
-      resolve(rms)
+      resolve(_getRMSuggestions(inputValue));
     }, 1000);
   });
-}
 
-export function surveyManagerOptions(inputValue) {
+export const surveyManagerOptions = inputValue =>
   new Promise(resolve => {
     setTimeout(() => {
-      //resolve(_getRMSuggestions(inputValue));
-      const rms = _getRMSuggestions(inputValue)
-      //resolve(_getRMSuggestions(inputValue));
-      console.log('resolving surveyManagerOptions RMs...: %s', JSON.stringify(rms))
-      resolve(rms)
+      resolve(_getRMSuggestions(inputValue));
     }, 1000);
   });
-}
+
+export const clientNameOptions = inputValue =>
+  new Promise(resolve => {
+    setTimeout(() => {
+      resolve(_getClientSuggestions(inputValue));
+    }, 1000);
+  });
+
+export const clientContactOptions = inputValue =>
+  new Promise(resolve => {
+    setTimeout(() => {
+      const contacts = _getContactSuggestions(inputValue)
+      console.log('clientContactOptions: ', JSON.stringify(contacts))
+      resolve(_getContactSuggestions(inputValue));
+    }, 1000);
+  });

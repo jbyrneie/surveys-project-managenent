@@ -2,7 +2,7 @@
   "name": "atlaskit-starter",
   "version": "1.0.0",
   "description": "Get your ADG3 on with this sample project using Atlaskit React components",
-  "homepage": "/qi-project-management/",
+  "homepage": "/survey-management/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -16,6 +16,7 @@
   "dependencies": {
     "@atlaskit/avatar": "14.0.9",
     "@atlaskit/badge": "9.1.4",
+    "@atlaskit/banner": "^7.0.8",
     "@atlaskit/button": "9.0.7",
     "@atlaskit/button-group": "1.5.4",
     "@atlaskit/checkbox": "5.0.4",

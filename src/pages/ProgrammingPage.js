@@ -1,12 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react'
-import Button, { ButtonGroup } from '@atlaskit/button';
 import Programming from '../components/Programming';
 import MyTasks from '../components/MyTasks';
 import AppBar from '../components/AppBar';
-import ContentWrapper from '../components/ContentWrapper';
-import PageTitle from '../components/PageTitle';
 import _ from 'lodash';
 import {STATUS} from '../lib/utils'
 

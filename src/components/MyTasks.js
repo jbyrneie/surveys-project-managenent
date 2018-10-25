@@ -1,16 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-import styled from 'styled-components';
-import Lozenge from '@atlaskit/lozenge';
-import Button from '@atlaskit/button';
-import Page from '@atlaskit/page';
-import PageTitle from '../components/PageTitle'
 import PageHeader from '@atlaskit/page-header';
-import Badge from '@atlaskit/badge';
-import { ThemeProvider } from 'styled-components';
-import { themed, colors } from '@atlaskit/theme';
-import {daysLeft, daysDuration, surveyDetails, mapStatusToAction, getAppearanceFromStatus, mapStatusToString} from '../lib/utils'
+import {daysLeft, daysDuration, surveyDetails, mapStatusToAction, mapStatusToString} from '../lib/utils'
 import moment from 'moment'
 import numeral from 'numeral'
 
@@ -22,10 +14,6 @@ class MyTasks extends Component {
     router: PropTypes.object,
   };
 
-  constructor(props, context) {
-    super(props, context);
-  }
-
   componentWillMount() {
     const ele = document.getElementById('ipl-progress-indicator')
     if (ele) {
@@ -35,13 +23,6 @@ class MyTasks extends Component {
 
   render() {
     const myTasks = this.props.store.qiStore.myTasks
-    const theme = {
-      primary: {
-        background: {
-          default: themed({ light: '#8a96a0'}),
-        },
-      },
-    };
 
     return(
       <div className='container'>

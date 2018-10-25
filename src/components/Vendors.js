@@ -1,16 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react'
-import Button, { ButtonGroup } from '@atlaskit/button';
 import { Progress } from 'react-sweet-progress';
 import "react-sweet-progress/lib/style.css";
-import AppBar from '../components/AppBar';
-import VendorSurveysByCategory from './VendorSurveysByCategory';
-import VendorSurveysBySurvey from './VendorSurveysBySurvey';
-import ContentWrapper from './ContentWrapper';
-import PageTitle from './PageTitle';
-import _ from 'lodash';
-import {STATUS} from '../lib/utils'
 
 // Custom Styles
 import '../css/qi.css'
@@ -19,7 +11,7 @@ class Vendors extends Component {
   static contextTypes = {
     router: PropTypes.object,
   };
-  
+
   constructor(props, context) {
     super(props, context);
     this.state = { groupBy: '0', filterBy: '0' }
@@ -40,7 +32,7 @@ class Vendors extends Component {
     this.props.store.qiStore.setSelectedVendor(vendors[index])
     this.context.router.push('/vendorSurveys')
   }
-  
+
   render() {
     const vendors = this.props.store.qiStore.vendors
     return (

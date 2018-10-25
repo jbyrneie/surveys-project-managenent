@@ -1,14 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-import styled from 'styled-components';
-import Lozenge from '@atlaskit/lozenge';
 import Button from '@atlaskit/button';
 import ButtonGroup from '@atlaskit/button-group';
-import Page from '@atlaskit/page';
-import PageTitle from '../components/PageTitle'
 import SurveyDetailsMenu from '../components/SurveyDetailsMenu'
-import PageHeader from '@atlaskit/page-header';
 import {
   DropdownMenuStateless,
   DropdownItemGroupRadio,

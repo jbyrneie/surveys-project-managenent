@@ -1,15 +1,7 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-import moment from 'moment'
-import numeral from 'numeral'
 import _ from 'lodash'
-import styled from 'styled-components';
-import Lozenge from '@atlaskit/lozenge';
-import Page from '@atlaskit/page';
-import PageTitle from '../components/PageTitle'
-import PageHeader from '@atlaskit/page-header';
-import Badge from '@atlaskit/badge';
-import {daysLeft, daysDuration, surveyDetails, taskTitle, asigneesAbbreviation} from '../lib/utils'
+import PageHeader from '@atlaskit/page-header'
 
 class VendorSurveysByCategory extends Component {
   componentWillMount() {
