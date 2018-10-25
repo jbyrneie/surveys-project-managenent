@@ -47,6 +47,7 @@ export default class MainRouter extends Component {
   }
 
   render() {
+    console.log("MainRouter rendered MOUNT: ", process.env.REACT_APP_MOUNT);
     return (
       <Router history={browserHistory}>
         <Route component={this.appWithPersistentNav()}>
