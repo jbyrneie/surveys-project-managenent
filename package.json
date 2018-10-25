@@ -5,7 +5,7 @@
   "homepage": "/survey-management/",
   "scripts": {
     "start": "per-env",
-    "build": "react-scripts build && sw-precache --config=sw-precache-config.js",
+    "build": "react-scripts build",
     "start:development": "source etc/dev.env; react-scripts start",
     "start:production": "npm run build; bin/serve_static",
     "eject": "react-scripts eject"
