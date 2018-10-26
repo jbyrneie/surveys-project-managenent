@@ -4,7 +4,6 @@ import { observer, inject } from 'mobx-react'
 import Button, { ButtonGroup } from '@atlaskit/button';
 import VendorSurveysByCategory from './VendorSurveysByCategory';
 import VendorSurveysBySurvey from './VendorSurveysBySurvey';
-import ContentWrapper from './ContentWrapper';
 import PageTitle from './PageTitle';
 import _ from 'lodash';
 import {STATUS} from '../lib/utils'
@@ -17,7 +16,7 @@ class VendorsSurveys extends Component {
     onCancel: PropTypes.func,
     onClose: PropTypes.func,
   };
-  
+
   render() {
     return (
       <div>
