@@ -55,8 +55,8 @@ export function mapStatusToAction(status) {
 }
 
 export function navigate(route, event) {
-  console.log('navigating to: ', `${process.env.REACT_APP_MOUNT}/${route}`);
-  this.context.router.push(`${process.env.REACT_APP_MOUNT}/${route}`)
+  console.log('navigating to: ', route);
+  this.context.router.push(route)
 }
 
 export function surveyDetails(index, surveys, event) {
