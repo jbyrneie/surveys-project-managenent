@@ -44,16 +44,16 @@ class SideBar extends Component {
           <FontAwesomeIcon icon="home" size='2x' style={{color: selectedPage==='home'?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, '/')}/>
         </div>
         <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em'}}>
-          <FontAwesomeIcon style={{color: selectedPage==='programming'?'#2db7fc':'#d8dfe5'}} icon="keyboard" size='2x' onClick={navigate.bind(this, 'programming/')}/>
+          <FontAwesomeIcon style={{color: selectedPage==='programming'?'#2db7fc':'#d8dfe5'}} icon="keyboard" size='2x' onClick={navigate.bind(this, '/programming')}/>
         </div>
         <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em'}}>
-          <FontAwesomeIcon icon="chart-line" size='2x' style={{color: selectedPage==='reporting'?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, 'reporting/')}/>
+          <FontAwesomeIcon icon="chart-line" size='2x' style={{color: selectedPage==='reporting'?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, '/reporting')}/>
         </div>
         <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em'}}>
-          <FontAwesomeIcon icon="search" size='2x' style={{color: selectedPage==='feasability'?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, 'feasability/')}/>
+          <FontAwesomeIcon icon="search" size='2x' style={{color: selectedPage==='feasability'?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, '/feasability')}/>
         </div>
         <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em'}}>
-          <FontAwesomeIcon icon="shopping-bag" size='2x' style={{color: selectedPage==='vendors'?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, 'vendors/')}/>
+          <FontAwesomeIcon icon="shopping-bag" size='2x' style={{color: selectedPage==='vendors'?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, '/vendors')}/>
         </div>
       </div>
     );
