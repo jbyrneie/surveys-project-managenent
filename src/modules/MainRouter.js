@@ -47,23 +47,23 @@ export default class MainRouter extends Component {
   }
 
   render() {
-    console.log("MainRouter rendered MOUNT: ", process.env.REACT_APP_MOUNT);
+    console.log("MainRouter rendered MOUNT}: ", process.env.REACT_APP_MOUNT);
     return (
       <Router history={browserHistory}>
         <Route component={this.appWithPersistentNav()}>
-          <Route path="/" component={HomePage} />
-          <Route path="/feasability" component={FeasabilityPage} />
-          <Route path="/lead" component={LeadsPage} />
-          <Route path="/programming" component={ProgrammingPage} />
-          <Route path="/surveyQuote" component={SurveyQuotePage} />
-          <Route path="/reporting" component={ReportingPage} />
-          <Route path="/surveyActivity" component={SurveyActivityPage} />
-          <Route path="/surveyDetails" component={SurveyDetailsPage} />
-          <Route path="/surveyInvites" component={SurveyInvitesPage} />
-          <Route path="/surveyPerformance" component={SurveyPerformancePage} />
-          <Route path="/surveySettings" component={SurveySettingsPage} />
-          <Route path="/vendors" component={VendorsPage} />
-          <Route path="/vendorSurveys" component={VendorSurveysPage} />
+          <Route path={process.env.REACT_APP_MOUNT + '/'}  component={HomePage} />
+          <Route path={process.env.REACT_APP_MOUNT + '/feasability/'} component={FeasabilityPage} />
+          <Route path={process.env.REACT_APP_MOUNT + '/lead/'} component={LeadsPage} />
+          <Route path={process.env.REACT_APP_MOUNT + '/programming/'} component={ProgrammingPage} />
+          <Route path={process.env.REACT_APP_MOUNT + '/surveyQuote/'} component={SurveyQuotePage} />
+          <Route path={process.env.REACT_APP_MOUNT + '/reporting/'} component={ReportingPage} />
+          <Route path={process.env.REACT_APP_MOUNT + '/surveyActivity/'} component={SurveyActivityPage} />
+          <Route path={process.env.REACT_APP_MOUNT + '/surveyDetails/'} component={SurveyDetailsPage} />
+          <Route path={process.env.REACT_APP_MOUNT + '/surveyInvites/'} component={SurveyInvitesPage} />
+          <Route path={process.env.REACT_APP_MOUNT + '/surveyPerformance/'} component={SurveyPerformancePage} />
+          <Route path={process.env.REACT_APP_MOUNT + '/surveySettings/'} component={SurveySettingsPage} />
+          <Route path={process.env.REACT_APP_MOUNT + '/vendors/'} component={VendorsPage} />
+          <Route path={process.env.REACT_APP_MOUNT + '/vendorSurveys/'} component={VendorSurveysPage} />
         </Route>
       </Router>
     );
