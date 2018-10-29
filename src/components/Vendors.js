@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react'
 import { Progress } from 'react-sweet-progress';
 import "react-sweet-progress/lib/style.css";
+import {navigate} from '../lib/utils';
 
 // Custom Styles
 import '../css/qi.css'
@@ -30,7 +31,8 @@ class Vendors extends Component {
   _vendorSurveys(index, vendors, event) {
     console.log('_vendorSurveys: %s %s', index, JSON.stringify(vendors[index]));
     this.props.store.qiStore.setSelectedVendor(vendors[index])
-    this.context.router.push('/vendorSurveys')
+    const nav = navigate.bind(this, 'vendorSurveys')
+    nav()
   }
 
   render() {

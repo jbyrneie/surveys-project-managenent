@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
 import Tabs from '@atlaskit/tabs';
+import {navigate} from '../lib/utils'
 
 // Custom Styles
 import '../css/qi.css'
@@ -12,15 +13,12 @@ class SurveyDetailsMenu extends Component {
   };
 
   render() {
-    let prefix=''
-    if (process.env.NODE_ENV === 'production')
-      prefix = process.env.REACT_APP_MOUNT
     const tabs = [
-      { label: 'QUOTE', route: `${prefix}/surveyQuote`},
-      { label: 'SETTINGS', route: `${prefix}/surveySettings`},
-      { label: 'INVITES', route: `${prefix}/surveyInvites`},
-      { label: 'PERFORMANCE', route: `${prefix}/surveyPerformance`},
-      { label: 'ACTIVITY', route: `${prefix}/surveyActivity`},
+      { label: 'QUOTE', route: 'surveyQuote'},
+      { label: 'SETTINGS', route: 'surveySettings'},
+      { label: 'INVITES', route: 'surveyInvites'},
+      { label: 'PERFORMANCE', route: 'surveyPerformance'},
+      { label: 'ACTIVITY', route: 'surveyActivity'},
     ];
     let tab = this.props!=='undefined'?this.props.tab:'quote';
     console.log('tab: ', tab);
@@ -30,7 +28,7 @@ class SurveyDetailsMenu extends Component {
         <Tabs
           tabs={tabs}
           onSelect={(tab, index) => {
-            this.context.router.push(tabs[index].route)}
+            navigate.bind(this, tabs[index].route)}
           }
         />
       </div>

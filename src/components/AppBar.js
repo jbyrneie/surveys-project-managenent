@@ -3,19 +3,12 @@ import React, { Component } from 'react'
 import { ThemeProvider } from 'styled-components';
 import { themed } from '@atlaskit/theme';
 import Button, { themeNamespace } from '@atlaskit/button';
+import {navigate} from '../lib/utils'
 
 class AppBar extends Component {
   static contextTypes = {
-    router: PropTypes.object,
+    router: PropTypes.object
   };
-
-  _surveyLead(event) {
-    console.log('New Survey clicked....');
-    let prefix=''
-    if (process.env.NODE_ENV === 'production')
-      prefix = process.env.REACT_APP_MOUNT
-    this.context.router.push(`${prefix}/lead`)
-  }
 
   render() {
     console.log('AppBar render.....');
@@ -37,7 +30,7 @@ class AppBar extends Component {
                 <ThemeProvider theme={{ [themeNamespace]: theme }}>
                   <Button
                     appearance="primary"
-                    onClick={this._surveyLead.bind(this)}
+                    onClick={navigate.bind(this, 'lead')}
                     onClose={() => { }}
                   >New Lead
                   </Button>

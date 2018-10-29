@@ -9,8 +9,6 @@ import './css/qi.css'
 const stores = createStores()
 console.log('Stores created.....', process.env.REACT_APP_MOUNT);
 
-// eslint-disable-next-line no-undef
-//ReactDOM.render(<MainRouter />, document.getElementById('app-root'));
 stores.qiStore.getMyTasks()
 .then(() => {
   ReactDOM.render(
