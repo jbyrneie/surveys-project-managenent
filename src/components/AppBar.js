@@ -11,7 +11,10 @@ class AppBar extends Component {
 
   _surveyLead(event) {
     console.log('New Survey clicked....');
-    this.context.router.push('/lead')
+    let prefix=''
+    if (process.env.NODE_ENV === 'production')
+      prefix = process.env.REACT_APP_MOUNT
+    this.context.router.push(`${prefix}/lead`)
   }
 
   render() {

@@ -55,14 +55,17 @@ export function mapStatusToAction(status) {
 }
 
 export function navigate(route, event) {
-  console.log('navigating to: ', `${process.env.REACT_APP_MOUNT}${route}`);
-  this.context.router.push(`${process.env.REACT_APP_MOUNT}${route}`)
+  console.log('navigating to: ', route);
+  this.context.router.push(route)
 }
 
 export function surveyDetails(index, surveys, event) {
+  let prefix=''
+  if (process.env.NODE_ENV === 'production')
+    prefix = process.env.REACT_APP_MOUNT
   console.log('surveyDetails: %s %s', index, JSON.stringify(surveys[index]));
   this.props.store.qiStore.setSelectedSurvey(surveys[index])
-  this.context.router.push(`${process.env.REACT_APP_MOUNT}surveyDetails`)
+  this.context.router.push(`${prefix}/surveyDetails`)
 }
 
 export function taskTitle(title, num) {
