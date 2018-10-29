@@ -31,8 +31,7 @@ class Vendors extends Component {
   _vendorSurveys(index, vendors, event) {
     console.log('_vendorSurveys: %s %s', index, JSON.stringify(vendors[index]));
     this.props.store.qiStore.setSelectedVendor(vendors[index])
-    const nav = navigate.bind(this, 'vendorSurveys')
-    nav()
+    navigate.bind(this, 'vendorSurveys')()
   }
 
   render() {

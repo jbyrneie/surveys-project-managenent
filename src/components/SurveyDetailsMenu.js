@@ -28,7 +28,8 @@ class SurveyDetailsMenu extends Component {
         <Tabs
           tabs={tabs}
           onSelect={(tab, index) => {
-            navigate.bind(this, tabs[index].route)}
+            navigate.bind(this, tabs[index].route)()
+          }
           }
         />
       </div>
