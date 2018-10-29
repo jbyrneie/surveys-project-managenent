@@ -12,12 +12,15 @@ class SurveyDetailsMenu extends Component {
   };
 
   render() {
+    let prefix=''
+    if (process.env.NODE_ENV === 'production')
+      prefix = process.env.REACT_APP_MOUNT
     const tabs = [
-      { label: 'QUOTE', route: '/surveyQuote'},
-      { label: 'SETTINGS', route: '/surveySettings'},
-      { label: 'INVITES', route: '/surveyInvites'},
-      { label: 'PERFORMANCE', route: '/surveyPerformance'},
-      { label: 'ACTIVITY', route: '/surveyActivity'},
+      { label: 'QUOTE', route: `${prefix}/surveyQuote`},
+      { label: 'SETTINGS', route: `${prefix}/surveySettings`},
+      { label: 'INVITES', route: `${prefix}/surveyInvites`},
+      { label: 'PERFORMANCE', route: `${prefix}/surveyPerformance`},
+      { label: 'ACTIVITY', route: `${prefix}/surveyActivity`},
     ];
     let tab = this.props!=='undefined'?this.props.tab:'quote';
     console.log('tab: ', tab);

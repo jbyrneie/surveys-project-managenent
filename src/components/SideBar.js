@@ -19,19 +19,6 @@ class SideBar extends Component {
     router: PropTypes.object,
   };
 
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      navLinks: [
-        ['/', 'Home', HomeFilledIcon],
-        ['/feasability', 'Feasability', SearchIcon],
-        ['/programming', 'Programming', CodeIcon],
-        ['/reporting', 'Reporting', GraphLineIcon],
-        ['/vendors', 'Vendors', ListIcon],
-      ]
-    };
-  }
-
   render() {
     let prefix=''
     if (process.env.NODE_ENV === 'production')
@@ -43,7 +30,7 @@ class SideBar extends Component {
 
     return (
       <div style={{position: 'relative', backgroundColor: 'white'}}>
-        <div style={{color:'#A0A0A0', fontWeight:900, fontSize: '3em', paddingTop:'0.5em', paddingBottom:40, textAlign:"center"}} onClick={navigate.bind(this, '/')}>S</div>
+        <div style={{color:'#A0A0A0', fontWeight:900, fontSize: '3em', paddingTop:'0.5em', paddingBottom:40, textAlign:"center"}} onClick={navigate.bind(this, `${prefix}/`)}>S</div>
         <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em', paddingTop:'1em'}}>
           <FontAwesomeIcon icon="home" size='2x' style={{color: selectedPage==='home'?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, `${prefix}/`)}/>
         </div>
