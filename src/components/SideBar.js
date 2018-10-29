@@ -25,9 +25,9 @@ class SideBar extends Component {
 
     return (
       <div style={{position: 'relative', backgroundColor: 'white'}}>
-        <div style={{color:'#A0A0A0', fontWeight:900, fontSize: '3em', paddingTop:'0.5em', paddingBottom:40, textAlign:"center"}} onClick={navigate.bind(this, '/')}>S</div>
+        <div style={{color:'#A0A0A0', fontWeight:900, fontSize: '3em', paddingTop:'0.5em', paddingBottom:40, textAlign:"center"}} onClick={navigate.bind(this, 'home')}>S</div>
         <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em', paddingTop:'1em'}}>
-          <FontAwesomeIcon icon="home" size='2x' style={{color: selectedPage==='home'?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, '/')}/>
+          <FontAwesomeIcon icon="home" size='2x' style={{color: selectedPage==='home'?'#2db7fc':'#d8dfe5'}} onClick={navigate.bind(this, 'home')}/>
         </div>
         <div style={{textAlign:"center", marginLeft:'2em', marginRight:'2em', marginBottom:'4em'}}>
           <FontAwesomeIcon style={{color: selectedPage==='programming'?'#2db7fc':'#d8dfe5'}} icon="keyboard" size='2x' onClick={navigate.bind(this, 'programming')}/>

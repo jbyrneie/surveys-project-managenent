@@ -52,6 +52,7 @@ export default class MainRouter extends Component {
       <Router history={browserHistory}>
         <Route component={this.appWithPersistentNav()}>
           <Route path={process.env.REACT_APP_MOUNT + '/'}  component={HomePage} />
+          <Route path={process.env.REACT_APP_MOUNT + '/home'}  component={HomePage} />
           <Route path={process.env.REACT_APP_MOUNT + '/feasability'} component={FeasabilityPage} />
           <Route path={process.env.REACT_APP_MOUNT + '/lead'} component={LeadsPage} />
           <Route path={process.env.REACT_APP_MOUNT + '/programming'} component={ProgrammingPage} />
